@@ -26,12 +26,12 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
           type: "rewarded",
           platform: "touch",
         });
-      });
+      })
     }
 
     setTimeout(() => {
       setIsRewarded(true);
-    }, 1000);
+    }, 2000);
   };
 
   const handleClose = () => {
