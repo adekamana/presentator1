@@ -9,13 +9,13 @@ import { validationSchema } from "./utils";
 import cn from "classnames";
 
 const Generation = () => {
-  const screenWidth = window.screen.width;
 
   let role = window.localStorage.getItem("role");
   const navigate = useNavigate();
   const [typeGeneration, setTypeGeneration] = useState("automatic");
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationMessage, setGenerationMessage] = useState("Презентация генерируется...");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleRadioChange = (value) => {
     setTypeGeneration(value);
@@ -30,25 +30,7 @@ const Generation = () => {
   };
 
   const sendPostRequest = async (data) => {
-    try {
-      if (screenWidth >= 768) {
-        await window.yaContextCb.push(() => {
-          window.Ya.Context.AdvManager.render({
-            "blockId": "R-A-6659913-3",
-            "type": "rewarded",
-            "platform": "desktop"
-          });
-        });
-      } else {
-        await window.yaContextCb.push(() => {
-          window.Ya.Context.AdvManager.render({
-            blockId: "R-A-6659913-4",
-            type: "rewarded",
-            platform: "touch"
-          });
-        });
-      }
-      
+    try { 
       setIsGenerating(true);
 
       const response = await fetch("https://презентатор.рф/api2/generate/", {
@@ -233,7 +215,10 @@ const Generation = () => {
                         </div>
                       ) : (
                         <div className={styles.buttonContainer}>
-                          <button type="submit" onClick={handleSubmit}>
+                          {/*
+                          TODO: Применить метод для начала генерации
+                          */}
+                          <button type="submit" onClick={() => setIsModalVisible(true)} className={styles.button}>
                             Начать магию
                           </button>
                         </div>
@@ -247,6 +232,7 @@ const Generation = () => {
           </div>
         </div>
       </div>
+      <Modal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
     </main>
   );
 };
