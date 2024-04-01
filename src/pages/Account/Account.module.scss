@@ -133,8 +133,7 @@ margin-bottom: 8px;
 	margin-right: 15px;
 	display: flex;
 	flex-direction: column;
-	justify-content: end;
-	align-items: end;
+	align-items: center;
 
 	//span	color: 
 	span {
@@ -201,7 +200,7 @@ margin-bottom: 8px;
 }
 .checkeds{
 	margin-left: 10px;
-	transform: scale(1.3);
+	transform: scale(1.4);
 }
 .confirmCheckboxLabel{
 	color: rgb(21, 30, 45);
@@ -301,6 +300,8 @@ margin-bottom: 8px;
 
 	cursor: pointer;
 }
+
+
 
 @media screen and (max-width: 1920px) {
 	.opacityBox{

@@ -79,3 +79,47 @@
 	color: rgb(185, 60, 166);
 	cursor: pointer;
 }
+.rewardContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 48px;
+}
+
+.rewardContainer {
+	width: 448px;
+	height: 150px;
+	background: white;
+	border-radius: 15px;
+	box-sizing: border-box;
+	padding: 16px;
+}
+
+.rewardSubtitle {
+	color: rgb(21, 30, 45);
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 115%;
+	letter-spacing: 0%;
+	text-align: center;
+}
+.rewardButtonPrimary {
+	margin-top: 16px;
+	text-decoration: none;
+	border: none;
+	border-radius: 10px;
+	backdrop-filter: blur(7px);
+	background: linear-gradient(-46.40deg, rgb(45, 19, 172),rgb(130, 59, 182) 27.851%,rgb(185, 60, 166) 68.162%,rgb(230, 186, 91) 104.703%);
+	color: rgb(255, 255, 255);
+	width: 127px;
+	height: 36px;
+	// шрифт
+	font-size: 18px;
+	line-height: 21px;
+	letter-spacing: 0%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}

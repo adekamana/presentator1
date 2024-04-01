@@ -14,7 +14,7 @@ const Confirm = () => {
 	const role = window.localStorage.getItem('role')
 	const [showErrorText, setShowErrorText] = useState(false);
 	function focusChange(e) {
-    if (e.target.value.length >= e.target.getAttribute("maxlength")) {
+    if (e.target.value.length >= e.target.getAttribute("maxLength")) {
       e.target.nextElementSibling.focus();
     }
   }
@@ -72,6 +72,7 @@ const Confirm = () => {
 										<div className={styles.subtitle}>
 												Пожалуйста перейдите в{" "}
 												<a
+												className={styles.subtitleLink}
 												href="https://t.me/presentator_help_bot"
 												target="_blank"
 												rel="noopener noreferrer"
@@ -85,19 +86,23 @@ const Confirm = () => {
 
 										<div className={styles.inputContainer}>
 											<Field
+											id='number'
 											key='first'
 											name='first'
 											type='number'
-											maxLength={1}
+											maxlength="1"
+											size="1"
 											onInput={(e) => focusChange(e)}
 											autoFocus
 											className={cn(styles.confirmInput, {[styles.inputError]: errors.first && touched.first})} 
 											/>
 											<Field
+											id='number'
 											key='second'
 											name='second'
 											type='number'
-											maxLength={1}
+											maxlength="1"
+											size="1"
 											onInput={(e) => focusChange(e)}
 											className={cn(styles.confirmInput, {[styles.inputError]: errors.second && touched.second})} 
 											/>
@@ -105,7 +110,8 @@ const Confirm = () => {
 											key='third'
 											name='third'
 											type='number'
-											maxLength={1}
+											maxlength="1"
+											size="1"
 											onInput={(e) => focusChange(e)}
 											className={cn(styles.confirmInput, {[styles.inputError]: errors.third && touched.third, })} 
 											/>
@@ -113,7 +119,8 @@ const Confirm = () => {
 											key='fourth'
 											name='fourth'
 											type='number'
-											maxLength={1}
+											maxlength="1"
+											size="1"
 											className={cn(styles.confirmInput, {[styles.inputError]: errors.fourth && touched.fourth, })} 
 											/>
 	
@@ -135,9 +142,6 @@ const Confirm = () => {
 					  				{showErrorText && (
 										<p className={styles.errorText}>Неверный код!</p>
 									)}	
-										
-
-										
 									</div>
 								</Form>
 							)}

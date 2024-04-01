@@ -52,14 +52,14 @@ const Registration: FC = () => {
                     <div className={styles.prefix}>+7</div>
                     <Field
                       name="login"
-                      placeholder="Номер телефона"
+                      placeholder="(999) 999-99-99"
                       className={cn(styles.registerInput, {[styles.inputError]: errors.login && touched.login})}
                     >
                       {({ field }: { field: any }) => (
                         <InputMask
                           {...field}
                           mask="(999) 999-99-99"
-                          
+                          placeholder="(999) 999-99-99"
                         >
                           {(inputProps: any) => <input {...inputProps} className={styles.registerInput} />}
                         </InputMask>

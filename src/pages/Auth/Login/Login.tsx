@@ -84,6 +84,7 @@ const Login: FC = () => {
 												<InputMask
 													{...field}
 													mask="(999) 999-99-99"
+													placeholder="(999) 999-99-99"
 												>
 													
 													{(inputProps: any) => <input {...inputProps} className={styles.registerInput} />}
@@ -107,7 +108,7 @@ const Login: FC = () => {
 										<button type='submit'>Войти</button>
 									</div>
 									<span className={styles.forgot}>
-										<a href="https://t.me/presentator_helper_bot" target="_blank" rel="noopener noreferrer">Забыли пароль?</a>
+										<a href="https://t.me/presentator_helper_bot" target="_blank" rel="noopener noreferrer" className={styles.subtitleLink}>Забыли пароль?</a>
 									</span>
 								</div>
 							</Form>
