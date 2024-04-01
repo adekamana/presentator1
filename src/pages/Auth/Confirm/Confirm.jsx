@@ -125,6 +125,7 @@ const Confirm = () => {
 											/>
 	
 										</div>
+										
 										<div className={styles.confirmCheckboxContainer}>
 												<Field type='checkbox' checked={checked} onChange={() => setChekecd(!checked)} className={styles.confirmCheckbox}/>
 												<div className={styles.confirmCheckboxLabel}>
@@ -134,6 +135,7 @@ const Confirm = () => {
 													<span> и принимаю его условия </span>
 												</div>
 										</div>
+										
 										<div className={styles.buttonContainer}>
                    	 <button type="submit" onClick={handleSubmit} className={styles.button} disabled={!checked}>
 											Подтвердить

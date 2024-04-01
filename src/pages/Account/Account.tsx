@@ -198,14 +198,14 @@ const Account: FC = () => {
                   Перейти к генерациям...
                 </a>
               </div>{" "}
-              <div className="checkeds">
+              <div className={styles.accountCheckboxContainer}>
                 <input
                   type="checkbox"
                   checked={checked}
                   onChange={handleChange}
-                  className={styles.checkeds}
+                  className={styles.accountCheckbox}
                 />
-                <div className={styles.confirmCheckboxLabel}>
+                <div className={styles.accountCheckboxLabel}>
                   <span>
                     Я прочитал(а){" "}
                     <a
@@ -218,6 +218,8 @@ const Account: FC = () => {
                   <span> и принимаю его условия </span>
                 </div>
               </div>
+
+              
               <ButtonComponent
                 selected={activeButton !== null && activeBox == true}
                 onClick={handleBuyGenerations}
