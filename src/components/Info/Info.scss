@@ -1,0 +1,153 @@
+.infoContainer {
+	padding: 0 60px;
+}
+.infoContainerMobile{
+	display: none;
+}
+
+.infoItem-forward{
+	display: flex;
+	align-items: center;
+	img {
+		margin-left: -70px
+	}
+}
+
+.infoItem-reverse{
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+
+}
+
+.descriptionContainer{
+	width: 769px;
+	background: linear-gradient(-79.40deg, rgb(230, 186, 91),rgb(130, 59, 182) 27.851%,rgb(185, 60, 166) 68.162%,rgb(45, 19, 172)104.703%);
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px;
+}
+
+
+.description{
+	background: #151E2D;
+	border-radius: 20px;
+	padding: 32px;
+	font-size: 30px;
+	font-weight: 400;
+	line-height: 38px;
+	letter-spacing: 0%;
+}
+
+
+@media screen and (max-width: 1280px) {
+	.infoItem-forward{
+		img {
+			width: 480px;
+		}
+	}
+	
+	.infoItem-reverse{
+		img {
+			width: 480px;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+		.description{
+			font-size: 22px;
+		}
+		.infoItem-forward{
+			img {
+				width: 360px;
+			}
+		}
+		
+		.infoItem-reverse{
+			img {
+				width: 360px;
+			}
+		}
+ }
+
+ @media screen and (max-width: 920px) {
+	.infoContainer {
+		padding: 0 24px;
+	}
+
+	.description{
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 21px;
+		letter-spacing: 0%;
+		padding: 16px;
+	}
+	.infoItem-forward{
+		img {
+			width: 212px;
+			margin: 0;
+		}
+	}
+	
+	.infoItem-reverse{
+		img {
+			width: 212px;
+		}
+	}
+	.descriptionContainer{
+		width: 450px;
+	}
+ }
+
+ @media screen and (max-width: 430px) {
+
+	.infoContainer {
+		display: none
+	}
+	.infoContainerMobile {
+		display: initial
+	}
+	.descriptionContainer {
+		width: 343px;
+		padding: 1px;
+	}
+	.descriptionBlock {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.description {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 17px;
+		padding: 8px 16px;
+
+	}
+	.divider-visible{
+		margin: 16px 0;
+	}
+	.divider-hidden{
+		display: none;
+	}
+
+	.image {
+		width: 100%;
+		height: auto;
+	}
+
+	.imagesBlock{
+		margin-top: 4px;
+		padding: 0 16px;
+		display: grid; 
+
+		grid-template-rows: 1fr ;
+		grid-template-columns: 1fr 1fr 1fr;
+		
+		gap: 0px;
+		height: 100%;
+	}
+ }

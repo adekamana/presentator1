@@ -1,0 +1,415 @@
+@font-face {
+	font-family: 'Benzin';
+	src: url('../../assets/fonts/Benzin/Benzin-ExtraBold.ttf')format('truetype');
+	src: url('../../assets/fonts/Benzin/Benzin-Bold.ttf')format('ttf');
+}
+
+.container{
+	height: 100vh;
+	width: 100vw;
+	background-image: url("../../../public/images/accountBackground.png"), url("../../../public/images/greet.png");
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+.activeButton {
+	background-color: #9923f455;
+	color: #ffffff;
+  }
+
+.activeText {
+color: rgb(255, 255, 255);
+font-size: 24px;
+font-weight: 500;
+line-height: 28px;
+letter-spacing: 0%;
+margin-bottom: 8px;
+}
+.opacityBox{
+	background: rgba(21, 30, 45, 0.5);
+	width: 100%;
+	height: 100%;
+}
+
+.contentBox{
+	padding: 0;
+	overflow-y: scroll;
+}
+
+
+.content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.account {
+	background-color: white;
+	border-radius: 20px;
+	width: 540px;
+	min-width: 540px;
+
+}
+
+.accountHeader{
+	padding: 40px 60px;
+	max-width: 1440px;
+}
+
+.title {
+	color: rgb(21, 30, 45);
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 125%;
+	letter-spacing: 0%;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	padding: 60px 60px 20px 60px
+}
+
+.label {
+	color: rgba(21, 30, 45, 0.4);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+}
+
+.buttonGroup{
+	display: flex;
+	justify-content: center;
+}
+
+.buttonPrimary{
+	text-decoration: none;
+	border: none;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	backdrop-filter: blur(7px);
+	background: linear-gradient(-46.40deg, rgb(45, 19, 172),rgb(130, 59, 182) 27.851%,rgb(185, 60, 166) 68.162%,rgb(230, 186, 91) 104.703%);
+	color: rgb(255, 255, 255);
+	// шрифт
+	font-size: 18px;
+	line-height: 21px;
+	letter-spacing: 0%;
+	width: 240px;
+	height: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.transparentButton {
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    backdrop-filter: blur(7px);
+	margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+    /* шрифт */
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    height: 48px;
+    opacity: 0.5; /* Неактивное состояние кнопки */
+    pointer-events: none; /* Отключение событий для неактивной кнопки */
+}
+
+.transparentButton.active {
+    opacity: 1; /* Активное состояние кнопки */
+    pointer-events: initial; /* Включение событий для активной кнопки */
+}
+.stat{
+	margin-top: 2px;
+	margin-bottom: 35px;
+	margin-right: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: end;
+
+	//span	color: 
+	span {
+		color: rgb(0, 0, 0);
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 145%;
+		letter-spacing: 0%;
+		margin-bottom: 8px;
+	}
+}
+.accountFooter{
+	margin-top: 8px;
+	margin-left: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: start;
+
+	//span	color: 
+	span {
+		color: rgb(0, 0, 0);
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 145%;
+		letter-spacing: 0%;
+		margin-bottom: 8px;
+	}
+}
+
+.infocontainer{
+	background: linear-gradient(-79.40deg, rgb(230, 186, 91),rgb(130, 59, 182) 27.851%,rgb(185, 60, 166) 68.162%,rgb(45, 19, 172)104.703%);
+	height: 78px;
+	width: 420px;
+	border-radius: 10px;
+	margin-bottom: 48px;
+	margin-top: 8px;	
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.priceContainer{
+
+	margin-top: 8px;
+	border-radius: 10px;
+	width: 124px;
+	height: 84px;
+	border: 1px solid rgb(91, 136, 229);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.confirmCheckboxContainer {
+	display: flex;
+	flex-direction: row;
+}
+.link {
+	color: rgb(91, 136, 229);
+	text-decoration: underline
+}
+.checkeds{
+	margin-left: 10px;
+	transform: scale(1.3);
+}
+.confirmCheckboxLabel{
+	color: rgb(21, 30, 45);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	text-align: left;
+
+	display:flex;
+	flex-direction: column;
+	margin-left: 10px;
+}
+.prices{
+	margin-bottom: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.priceNumber{
+	color: rgb(21, 30, 45);
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 28px;
+	letter-spacing: 0%;
+	margin-bottom: 8px;
+}
+
+.priceValue {
+	color: rgb(21, 30, 45);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+
+}
+
+.info{
+	width: 418px;
+	height: 76px;
+	border-radius: 10px;
+	background: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.iconContainer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 10px;
+	background: linear-gradient(90deg, rgb(0, 83, 255),rgb(91, 136, 229),rgb(82, 0, 255));
+	margin-right: 8px;
+	padding: 1px
+}
+
+.icon{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	width: 31px;
+	height: 31px;
+	background-color: white;
+}
+
+.user{
+	color: rgb(0, 0, 0);
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 21px;
+	letter-spacing: 0%;
+	margin: 0 8px;
+}
+
+.dot{
+	background: black;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+}
+
+.logout{
+	color: rgb(255, 51, 31);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0%;
+	text-align: left;
+	text-decoration-line: underline;
+	margin: 0 8px;
+
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1920px) {
+	.opacityBox{
+		display: flex;
+		justify-content: center;
+	}
+  .contentBox{
+    overflow-x: hidden;
+    width: 1440px;
+  }
+}
+
+
+@media screen and (max-width: 2560px) {
+	.opacityBox{
+		display: flex;
+		justify-content: center;
+	}
+  .contentBox{
+    overflow-x: hidden;
+    width: 1440px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+	.account {
+		width: 557px;
+		min-width: 557px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.account {
+		width: 343px;
+		min-width: 343px;
+	}
+	.title {
+		font-size: 27px;
+		margin-bottom: 8px;
+	}
+	.form{
+		display: flex;
+		flex-direction: column;
+		padding: 40px
+	}
+
+	.label {
+		font-size: 14px;
+	}
+
+	.buttonPrimary {
+		width: 185px;
+		font-size: 14px;
+	}
+	.accountFooter {
+		span {
+			font-size: 12px;
+		}
+	}
+
+	.infocontainer {
+		width: 257px;
+		height: 52px;
+		margin-bottom: 12px;
+	}
+
+	.logout {
+		font-size: 12px;
+	}
+	.iconContainer {
+		width: 22px;
+		height: 22px;
+		border-radius: 7px;
+		margin: 0;
+		padding: 0;
+	}
+	.icon {
+		width: 20px;
+		height: 20px;
+		border-radius: 5px;
+		img {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	.user {
+		font-size: 11px;
+	}
+
+	.info {
+		width: 255px;
+		height: 50px;
+	}
+	.priceContainer {
+		width: 124px;
+		height: 65px;
+	}
+	.prices{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin-bottom: 18px;
+	}
+	.priceValue {
+		font-size: 14px;
+	}
+	.priceNumber {
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+}
+

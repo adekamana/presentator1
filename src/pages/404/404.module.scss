@@ -1,0 +1,79 @@
+.container{
+	width: 100vw;
+	height: 100vh;
+	background-image: url("../../../public/images/greet.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	padding: 60px;
+	box-sizing: border-box;
+}
+.titleSection{
+	display: flex;
+	flex-direction: column;
+	align-items: center	;
+}
+.buttonContainer{
+	display: flex;
+	justify-content: center;
+}
+
+.textSection{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.title{
+	font-size: 64px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+}
+
+.titleColor {
+	font-size: 72px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+	color: rgb(91, 136, 229);
+}
+button{
+	margin: 16px 0;
+	border-radius: 10px;
+	background: rgb(91, 136, 229);
+	text-decoration: none;
+	border: none;
+	width: 250px;
+	height: 48px;
+	cursor: pointer;
+	//шрифт
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 21px;
+	letter-spacing: 0%;
+}
+
+@media screen and (max-width: 1280px) {
+	.imageSection{
+		img {
+			width: 480px;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.title{
+	font-size: 48px;
+	}
+	.imageSection{
+		img {
+			width: 360px;
+		}
+	}
+}

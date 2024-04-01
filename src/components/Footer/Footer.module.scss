@@ -1,0 +1,157 @@
+.footer {
+	display: inline-block;
+	left: 0;
+	background: linear-gradient(180.00deg, rgb(64, 28, 174, 0.4),rgba(64, 28, 174, 0) 96.707%);
+	height: 334px;
+	width: 100vw;
+	position: absolute;
+}
+
+.container {
+	position: relative;
+	height: 100%;
+}
+
+
+.footerImage {
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	z-index: -5;
+	object-fit: fill;
+	max-height: 278px;
+}
+
+.footerInfo {
+	display: grid;
+	grid-template-columns: 35% 20% 20% 20%; 
+	padding: 25px 60px;
+}
+.footerInfoMobile {
+	display: none;
+}
+.footerInfoLink{
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0%;
+	margin: 8px 0 8px 0;
+	z-index: 3;
+}
+
+.footerInfoItem{ 
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	
+}
+
+.footerInfoTitle {
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 29px;
+	letter-spacing: 0%;
+	margin: 0px 0 23px 0;
+}
+
+.socialWeb{
+	display: flex;
+	flex-direction: row;
+}
+
+.socialWebIcon{
+	cursor: pointer;
+	margin-right: 16px;
+}
+.socialWebIcon:hover {
+	opacity: .7;
+}
+
+@media screen and (max-width: 1024px) {
+	.socialWebIcon {
+		width: 28px;
+	}
+	.footerInfo {
+		padding: 25px 30px
+	}
+}
+
+@media screen and (max-width: 920px) { 
+
+	.footerLogo {
+		display: none;
+	}
+	.footerInfoTitle {
+		font-size: 20px;
+	}
+	.footerInfo {
+		display: flex;
+		justify-content: space-around;
+	}
+	.footerInfoLink{
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.footer  {
+		height: 173px;
+		padding-bottom: 0;
+	}
+	.socialWebIcon {
+		width: 28px;
+	}
+	.footerLogo {
+		display: none;
+	}
+	.footerInfo {
+		display: none;
+	}
+	.footerInfoMobile {
+		display: grid; 
+		grid-template-rows: 1fr ;
+		grid-template-columns: 1fr 1fr;
+		
+		gap: 0px;
+		height: 60%;
+
+		padding: 11px 16px 0 16px;
+	}
+	.footerInfoTitle {
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 19px;
+		letter-spacing: 0%;
+		margin: 0 0 16px 0;
+	}
+	.footerInfoLink {
+		font-size: 11px;
+		font-weight: 300;
+		letter-spacing: 0%;
+		margin: 0;
+	}
+	.socialWebIcon {
+		width: 20px;
+		margin-right: 8px;
+	}
+	.dropdownHidden {
+		transform: scaleY(0);
+		transition: transform 0.4s;
+		transform-origin: top;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.dropdownVisible {
+		transform: scaleY(1);
+		transition: transform 0.4s;
+		transform-origin: top;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.arrow {
+	margin-left: 4px;
+}

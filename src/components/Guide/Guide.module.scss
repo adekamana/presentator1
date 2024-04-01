@@ -1,0 +1,115 @@
+.container{
+	padding: 0 60px;
+	margin-top: 30px;
+}
+
+.title{
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 125%
+}
+
+.guideImage{
+	margin: 60px 0;
+	width: 100%;
+	height: auto;
+}
+
+.guideStatistics{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 80px;
+}
+.guideStatisticsItem{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 23%;
+}
+
+.guideStatisticsValue{
+	font-size: 56px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+}
+
+.guideStatisticsLabel{
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 120%;
+	letter-spacing: 0%;
+}
+
+@media screen and (max-width: 1024px) { 
+	.guideStatisticsLabel {
+		font-size: 18px;
+	}
+	.guideStatisticsValue{
+		font-size: 48px;
+	}
+
+}
+
+@media screen and (max-width: 920px) {
+	.title {
+		font-size: 24px;
+	}
+	.container {
+		padding: 0 24px;
+	}
+	.guideImage {
+		margin: 32px 0 37px 0;
+	}
+	.guideStatisticsValue {
+		font-size: 32px;
+		margin-bottom: 8px;
+	}
+	.guideStatisticsLabel {
+		font-size: 16px;
+		font-weight: 300;
+	}
+	.guideStatistics{
+		margin-bottom: 56px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.container {
+		padding: 0 16px;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.title {
+		font-size: 16px;
+	}
+	.guideImage {
+		width: 343px;
+		margin: 16px 0 37px 0;
+	}
+	.guideStatistics {
+		display: grid; 
+
+		grid-template-rows: 50% 50%;
+		grid-template-columns: 50% 50%;
+		
+		gap: 16px;
+		height: 100%;
+		margin-bottom: 36px;
+	}
+	.guideStatisticsValue {
+		font-size: 24px;
+		margin-bottom: 8px;
+	}
+	.guideStatisticsLabel {
+		font-size: 14px;
+		font-weight: 300;
+	}
+	.guideStatisticsItem {
+		width: 150px;
+	}
+}

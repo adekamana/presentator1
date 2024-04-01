@@ -1,0 +1,46 @@
+
+.logo{
+	display: flex;
+	align-items: center;
+	img{
+		width: 415px;
+	}
+	cursor: pointer;
+}
+
+.logo:hover {
+	opacity: 0.8;
+}
+
+
+@media screen and (max-width: 1920px) {
+	.logo {
+		img{
+			width: 415px;
+		}
+	}
+}
+
+@media screen and (max-width: 920px) {
+	.logo {
+		img{
+			width: 330px;
+		}
+	}
+}
+
+
+@media screen and (max-width: 1024px) {
+	.logo {
+		img{
+			width: 330px;
+		}
+	}
+}
+@media screen and (max-width: 430px) {
+	.logo {
+		img{
+			width: 187px;
+		}
+	}
+}

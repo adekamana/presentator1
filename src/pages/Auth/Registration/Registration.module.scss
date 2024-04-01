@@ -1,0 +1,304 @@
+@font-face {
+	font-family: 'Benzin';
+	src: url('../../../assets/fonts/Benzin/Benzin-ExtraBold.ttf')format('truetype');
+	src: url('../../../assets/fonts/Benzin/Benzin-Bold.ttf')format('ttf');
+}
+
+.container{
+	height: 100vh;
+	width: 100vw;
+	background-image: url("../../../../public/images/background.png"), url("../../../../public/images/greet.png");
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	left: 0;
+	top:0;
+	overflow: hidden;
+}
+.inputWithPrefix {
+	display: flex;
+	align-items: center;
+  }
+  
+.prefix {
+padding: 15px;
+font-size: 22px;
+margin-top: -29px;
+}
+.opacityBox{
+	background: rgba(21, 30, 45, 0.5);
+	width: 100%;
+	height: 100%;
+}
+
+.content{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+}
+
+// form
+
+.form{
+	background-color: white;
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//size
+	width: 480px;
+	min-width: 480px;
+	height: 560px;
+	min-height: 560px;
+	border-radius: 20px
+}
+
+.formContainer{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 36px;
+	width: 360px;
+	text-align: center;
+}
+
+.title{
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.subtitle{
+	margin-bottom: 70px;
+	text-align: center;
+}
+
+.subtitleLabel{
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-right: 8px;
+	text-align: center;
+}
+
+.subtitleLink {
+	color: rgb(0, 83, 255);
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	text-decoration-line: underline;
+	cursor: pointer;
+}
+
+.formFooter{
+	display: flex;
+	justify-content: center;
+}
+
+.label {
+	color: rgb(91, 136, 229);
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-bottom: 15px;
+	margin-left: -10px;
+}
+
+.registerInput {
+	margin-bottom: 24px;
+	border: 2px solid rgb(91, 136, 229);
+	border-radius: 10px;
+	padding: 12px;
+	text-decoration: none;
+	outline: none;
+	font-size: 17px;
+}
+
+input[placeholder] {
+	color: rgba(0, 0, 0, 0.4);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19px;
+	letter-spacing: 0%;
+}
+
+button{
+	margin: 16px 0;
+	border-radius: 10px;
+	background: rgb(91, 136, 229);
+	text-decoration: none;
+	border: none;
+	width: 175px;
+	height: 48px;
+	cursor: pointer;
+	//шрифт
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 21px;
+	letter-spacing: 0%;
+}
+button:hover {
+	opacity: 0.9;
+}
+
+.buttonContainer{
+	display: flex;
+	justify-content: center;
+}
+
+.forgot{
+	color: rgba(21, 30, 45, 0.4);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-right: 15px;
+}
+
+.restore{
+	color: rgb(0, 83, 255);
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	text-align: left;
+	text-decoration-line: underline;
+	cursor: pointer;
+}
+
+.inputError{
+	margin-bottom: 24px;
+	border: 2px solid rgb(255, 51, 31);
+	border-radius: 10px;
+	padding: 10px;
+	text-decoration: none;
+	outline: none;
+
+
+	background-image: url("../../../../public/images/error.svg");
+	background-repeat: no-repeat;
+	background-position: 322px 50%;
+	:focus::placeholder {
+		color: transparent;
+	}
+}
+
+.labelError{
+	color: rgb(255, 51, 31);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-bottom: 15px
+}
+
+.headerContainer {
+	display: none;
+}
+//adaptive
+
+@media screen and (max-width: 1024px) {
+	.form{
+		//size
+		width: 420px;
+		min-width: 420px;
+		height: 540px;
+		min-height: 540px;
+		border-radius: 20px;
+		padding: 40px;
+		box-sizing: border-box;
+	}
+}
+
+@media screen and (max-width: 920px) { 
+	.logoContainer{
+		display: none;
+	}
+	.headerContainer {
+		display: initial;
+	}
+	.content {
+		display: flex;
+		align-items: start;
+		height: 580px;
+	}
+	.inputError{
+		background-position: 305px 50%;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.opacityBox{
+		display: flex;
+		flex-direction: column;
+	}
+	.logoContainer{
+		display: none;
+	}
+	.content {
+		display: flex;
+		align-items: start;
+		height: 580px;
+	}
+	.form{
+		//size
+		width: 343px;
+		min-width: 343px;
+		height: 366px;
+		min-height: 366px;
+		border-radius: 20px
+	}
+	.formContainer{
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 36px;
+		width: 400px;
+		text-align: center;
+	}
+	
+	.title {
+		font-size: 27px;
+		margin-bottom: 10px;
+	}
+	.subtitle {
+		margin-bottom: 40px;
+	}
+	.subtitleLabel {
+		font-size: 17px;
+	}
+	.subtitleLink {
+		font-size: 17px;
+	}
+	.label {
+		font-size: 11px;
+		margin: 5px;
+	}
+	.registerInput {
+		width: 180px;
+		margin-bottom: 16px;
+		margin-left: -12px;
+		color: black;
+	}
+	  
+	.prefix {
+		padding: 20px;
+		font-size: 18px;
+		margin-top: -20px;
+	}
+	.buttonContainer {
+		button {
+			width: 142px;
+			height: 44px;
+			margin: 16px 0 ;
+			font-size: 16px;
+		}
+	}
+}

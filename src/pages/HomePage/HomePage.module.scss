@@ -1,0 +1,24 @@
+.greetingContainer{
+	height: 100vh;
+	min-height: 875px;
+	background-image: url("../../../public/images/greet.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
+@media screen and (max-width: 430px) {
+	.greetingContainer{
+		height: 100vh;
+		min-height: 380px;
+		max-height: 380px;
+	}
+}
+
+@media screen and (max-width: 920px) {
+	.greetingContainer{
+		height: 100vh;
+		min-height: 450px;
+		max-height: 450px
+	}
+}
