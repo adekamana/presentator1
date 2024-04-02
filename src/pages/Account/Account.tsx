@@ -68,8 +68,26 @@ const Account: FC = () => {
         });
       });
     }
-    setTimeout(() => {
+    setTimeout(async() =>  {
       setIsModalVisible(true);
+      const phoneNumber = window.localStorage.getItem("login");
+      var cleanedPhoneNumber = "";
+      if (phoneNumber) {
+        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+      }
+
+      const serverData = {
+        phone_number: phoneNumber,
+      };
+
+      try {
+        const response = await axios.post(
+          `https://презентатор.рф/api/update_free_generates/?phone_number=${cleanedPhoneNumber}`
+        );
+        setGenerates(response.data);
+      } catch (error) {
+        console.error("Ошибка при отправке запроса:", error);
+      }
     }, 2000);
   };
 
@@ -89,8 +107,6 @@ const Account: FC = () => {
         const response = await axios.post(
           `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
         );
-        console.log("a");
-        console.log(response.data);
         setGenerates(response.data);
       } catch (error) {
         console.error("Ошибка при отправке запроса:", error);
