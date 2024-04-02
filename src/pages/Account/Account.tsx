@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import ButtonComponent from "./ButtonComponent";
 import { Form, Link } from "react-router-dom";
 import { Field, Formik } from "formik";
+import RewardModal from "../../components/RewardModal";
 interface Generates {
   free_generate: number;
   current_generate: number;
@@ -16,8 +17,9 @@ interface Generates {
 
 const Account: FC = () => {
   const navigate = useNavigate();
-
+  const screenWidth = window.screen.width;
   const [checked, setChecked] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
@@ -47,6 +49,29 @@ const Account: FC = () => {
     free_generate: 0,
     current_generate: 0,
   });
+
+  const rewardGeneration = () => {
+    if (screenWidth >= 768) {
+      window.yaContextCb.push(() => {
+        window.Ya.Context.AdvManager.render({
+          blockId: "R-A-6659913-3",
+          type: "rewarded",
+          platform: "desktop",
+        });
+      });
+    } else {
+      window.yaContextCb.push(() => {
+        window.Ya.Context.AdvManager.render({
+          blockId: "R-A-6659913-4",
+          type: "rewarded",
+          platform: "touch",
+        });
+      });
+    }
+    setTimeout(() => {
+      setIsModalVisible(true);
+    }, 2000);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,14 +103,14 @@ const Account: FC = () => {
   const handleBuyGenerations = async () => {
     console.log("Купить генерации");
     const phoneNumber = window.localStorage.getItem("login");
-      var cleanedPhoneNumber = "";
-      if (phoneNumber) {
-        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
-      }
-  
+    var cleanedPhoneNumber = "";
+    if (phoneNumber) {
+      cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+    }
+
     let apiUrl = "";
     let requestBody = {};
-  
+
     switch (activeButton) {
       case 0:
         apiUrl = "https://презентатор.рф/api/buy_1_download/";
@@ -103,14 +128,14 @@ const Account: FC = () => {
         console.log("Неверное значение activeButton");
         return;
     }
-  
+
     try {
       const response = await axios.post(
-        apiUrl+`?phone_number=${cleanedPhoneNumber}`
+        apiUrl + `?phone_number=${cleanedPhoneNumber}`
       );
       const data = response.data;
       console.log(data);
-      window.open(data, "_blank"); 
+      window.open(data, "_blank");
     } catch (error) {
       console.error("Ошибка при выполнении запроса:", error);
     }
@@ -177,7 +202,14 @@ const Account: FC = () => {
                       </div>
                     ))}
                   </div>
+                  <div
+                    className={styles.rewardGeneration}
+                    onClick={rewardGeneration}
+                  >
+                    Генерации за рекламу
+                  </div>
                 </div>
+
                 <span className={styles.label}>Статистика</span>
                 <div className={styles.accountFooter}>
                   <span>
@@ -218,8 +250,6 @@ const Account: FC = () => {
                   <span> и принимаю его условия </span>
                 </div>
               </div>
-
-              
               <ButtonComponent
                 selected={activeButton !== null && activeBox == true}
                 onClick={handleBuyGenerations}
@@ -228,6 +258,10 @@ const Account: FC = () => {
           </div>
         </div>
       </div>
+      <RewardModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      />
     </main>
   );
 };

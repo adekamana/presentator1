@@ -215,7 +215,7 @@ margin-bottom: 8px;
 	margin-left: 10px;
 }
 .prices{
-	margin-bottom: 40px;
+	margin-bottom: 24px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -355,6 +355,14 @@ margin-bottom: 8px;
 .accountCheckbox[type="checkbox"]:checked::before {
   transform: scale(1);
 }
+
+.rewardGeneration {
+	color: rgb(185, 60, 166);
+	font-weight: 500;
+	cursor: pointer;
+	font-size: 18px;
+	margin-bottom: 8px;
+}
 @media screen and (max-width: 1920px) {
 	.opacityBox{
 		display: flex;
@@ -401,6 +409,9 @@ margin-bottom: 8px;
 	}
 
 	.label {
+		font-size: 14px;
+	}
+	.rewardGeneration {
 		font-size: 14px;
 	}
 
