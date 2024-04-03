@@ -218,7 +218,7 @@ const Generation = () => {
                           {/*
                           TODO: Применить метод для начала генерации
                           */}
-                          <button type="submit" onClick={() => setIsModalVisible(true)} className={styles.button}>
+                          <button type="submit" onClick={handleSubmit} className={styles.button}>
                             Начать магию
                           </button>
                         </div>
