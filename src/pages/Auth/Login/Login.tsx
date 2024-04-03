@@ -40,6 +40,22 @@ const Login: FC = () => {
 							const url = `https://презентатор.рф/api/check_credentials/?phone_number=${encodedPhoneNumber}&password=${encodedPassword}`;
 							
 							try {
+
+								axios.interceptors.request.use(config => {
+									config.timeout = 300000
+									return config
+								})
+				
+								axios.interceptors.request.use(
+									response => response,
+									error => {
+										if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+											console.log('Ошибка запроса')
+										}
+										return Promise.reject(error)
+									}
+								)
+
 								const response = await axios.post(url);
 								if (response.data.status === "success") {
 									window.localStorage.setItem("role", "user");

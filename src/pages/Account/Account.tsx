@@ -81,10 +81,26 @@ const Account: FC = () => {
       };
 
       try {
+
+        axios.interceptors.request.use(config => {
+          config.timeout = 300000
+          return config
+        })
+
+        axios.interceptors.request.use(
+          response => response,
+          error => {
+            if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+              console.log('Ошибка запроса')
+            }
+            return Promise.reject(error)
+          }
+        )
         const response = await axios.post(
           `https://презентатор.рф/api/update_free_generates/?phone_number=${cleanedPhoneNumber}`
         );
         setGenerates(response.data);
+        console.log('data', response.data);
       } catch (error) {
         console.error("Ошибка при отправке запроса:", error);
       }
@@ -104,6 +120,22 @@ const Account: FC = () => {
       };
 
       try {
+
+        axios.interceptors.request.use(config => {
+          config.timeout = 300000
+          return config
+        })
+
+        axios.interceptors.request.use(
+          response => response,
+          error => {
+            if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+              console.log('Ошибка запроса')
+            }
+            return Promise.reject(error)
+          }
+        )
+
         const response = await axios.post(
           `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
         );
@@ -146,6 +178,22 @@ const Account: FC = () => {
     }
 
     try {
+
+      axios.interceptors.request.use(config => {
+        config.timeout = 300000
+        return config
+      })
+
+      axios.interceptors.request.use(
+        response => response,
+        error => {
+          if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+            console.log('Ошибка запроса')
+          }
+          return Promise.reject(error)
+        }
+      )
+
       const response = await axios.post(
         apiUrl + `?phone_number=${cleanedPhoneNumber}`
       );

@@ -42,6 +42,21 @@ const Presentation = () => {
       };
 
       try {
+        axios.interceptors.request.use(config => {
+          config.timeout = 300000
+          return config
+        })
+
+        axios.interceptors.request.use(
+          response => response,
+          error => {
+            if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+              console.log('Ошибка запроса')
+            }
+            return Promise.reject(error)
+          }
+        )
+        
         const response = await axios.post(
           `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
         );

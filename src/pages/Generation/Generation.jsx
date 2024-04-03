@@ -33,8 +33,22 @@ const Generation = () => {
     try { 
       setIsGenerating(true);
 
-      const response = await fetch("https://презентатор.рф/api2/generate/", {
-        method: "POST",
+      axios.interceptors.request.use(config => {
+        config.timeout = 300000
+        return config
+      })
+
+      axios.interceptors.request.use(
+        response => response,
+        error => {
+          if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+            console.log('Ошибка запроса')
+          }
+          return Promise.reject(error)
+        }
+      )
+
+      const response = await axios.post("https://презентатор.рф/api2/generate/", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -57,6 +71,21 @@ const Generation = () => {
 
     const updateGen = async () => {
       try {
+
+        axios.interceptors.request.use(config => {
+          config.timeout = 300000
+          return config
+        })
+
+        axios.interceptors.request.use(
+          response => response,
+          error => {
+            if(error.code === "ECONNABORTED" && error.message.includes('timeout')){
+              console.log('Ошибка запроса')
+            }
+            return Promise.reject(error)
+          }
+        )
         
         const phoneNumber = window.localStorage.getItem("login");
         var cleanedPhoneNumber = "";
