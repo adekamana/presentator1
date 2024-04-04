@@ -1,7 +1,10 @@
-import React, {FC, memo} from "react";
+import React, {createContext, FC, memo, useEffect, useState} from "react";
 import Header from "../components/Header";
 import { Navigate, Outlet } from 'react-router-dom';
+import axios from "axios";
 
+
+export const context = createContext({})
 const Layout: FC = () => {
 	// TODO check auth
 	const isAuth = true
@@ -13,11 +16,39 @@ const Layout: FC = () => {
 		return children
 	}
 
+	const [generates, setGenerates] = useState({
+    free_generate: 0,
+    current_generate: 0,
+  });
+
+	useEffect(() => {
+		const fetchData = async () => {
+      const phoneNumber = window.localStorage.getItem("login");
+      var cleanedPhoneNumber = "";
+      if (phoneNumber) {
+        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+      }
+
+      try {
+        const response = await axios.post(
+          `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
+        );
+        setGenerates(response.data);
+      } catch (error) {
+        console.error("Ошибка при отправке запроса:", error);
+      }
+    };
+
+    fetchData();
+	}, [])
+
 	return (
 		<>
 			<main>
 				<ProtectedRoute>
-					<Outlet/>
+					<context.Provider value={generates}>
+						<Outlet/>
+					</context.Provider>			
 				</ProtectedRoute>
 			</main>
 		</>

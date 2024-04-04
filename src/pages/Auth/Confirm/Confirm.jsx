@@ -51,7 +51,6 @@ const Confirm = () => {
 									const response = await axios.post(
 										"https://презентатор.рф/api/check_code/",
 										serverData
-										
 									);
 							
 									if (response.data.status === "success") {

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import styles from "./Generation.module.scss";
 import Header from "../../components/Header";
 import { Field, Formik } from "formik";
@@ -7,9 +7,10 @@ import { Form, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal";
 import { validationSchema } from "./utils";
 import cn from "classnames";
+import { context } from "../../containers/Layout";
 
 const Generation = () => {
-
+  const {free_generate} = useContext(context)
   let role = window.localStorage.getItem("role");
   const navigate = useNavigate();
   const [typeGeneration, setTypeGeneration] = useState("automatic");
@@ -32,7 +33,6 @@ const Generation = () => {
   const sendPostRequest = async (data) => {
     try { 
       setIsGenerating(true);
-
       const response = await fetch("https://презентатор.рф/api2/generate/", {
         method: "POST",
         headers: {
@@ -57,7 +57,7 @@ const Generation = () => {
 
     const updateGen = async () => {
       try {
-        
+
         const phoneNumber = window.localStorage.getItem("login");
         var cleanedPhoneNumber = "";
         if (phoneNumber) {
@@ -218,7 +218,7 @@ const Generation = () => {
                           {/*
                           TODO: Применить метод для начала генерации
                           */}
-                          <button type="submit" onClick={handleSubmit} className={styles.button}>
+                          <button type="submit" onClick={free_generate ? handleSubmit : () => setIsModalVisible(true)} className={styles.button}>
                             Начать магию
                           </button>
                         </div>
