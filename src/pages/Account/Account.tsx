@@ -85,6 +85,7 @@ const Account: FC = () => {
           `https://презентатор.рф/api/update_free_generates/?phone_number=${cleanedPhoneNumber}`
         );
         setGenerates(response.data);
+        console.log('data', response.data);
       } catch (error) {
         console.error("Ошибка при отправке запроса:", error);
       }
@@ -156,7 +157,6 @@ const Account: FC = () => {
       console.error("Ошибка при выполнении запроса:", error);
     }
   };
-
   return (
     <main className={styles.container}>
       <div className={styles.opacityBox}>
