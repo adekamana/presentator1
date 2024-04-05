@@ -8,6 +8,7 @@ import Modal from "../../components/Modal";
 import { validationSchema } from "./utils";
 import cn from "classnames";
 import { context } from "../../containers/Layout";
+import ServerErrorModal from "../../components/ServerErrorModal";
 
 const Generation = () => {
   const {generates} = useContext(context)
@@ -18,6 +19,7 @@ const Generation = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationMessage, setGenerationMessage] = useState("Презентация генерируется...");
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
 
   const handleRadioChange = (value) => {
     setTypeGeneration(value);
@@ -50,6 +52,8 @@ const Generation = () => {
       localStorage.setItem("presentationLink", responseData);
       navigate(`${checkRole()}`);
     } catch (error) {
+        setIsErrorModalVisible(true);
+        console.log(error);
     } finally {
       setIsGenerating(false);
     }
@@ -111,10 +115,6 @@ const Generation = () => {
 	}
   }, []);
 
-  useEffect(() => {
-    console.log('generates', free_generate)
-  }, [])
-
   return (
     <main className={styles.container}>
       <div className={styles.opacityBox}>
@@ -139,7 +139,6 @@ const Generation = () => {
                     type: typeGeneration,
                   };
 
-                  console.log("data", data);
                   sendPostRequest(data);
                   updateGen();
                   
@@ -238,6 +237,7 @@ const Generation = () => {
         </div>
       </div>
       <Modal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+      <ServerErrorModal isModalVisible={isErrorModalVisible} setIsModalVisible={setIsErrorModalVisible} />
     </main>
   );
 };
