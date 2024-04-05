@@ -10,7 +10,8 @@ import cn from "classnames";
 import { context } from "../../containers/Layout";
 
 const Generation = () => {
-  const {free_generate} = useContext(context)
+  const {generates} = useContext(context)
+  const {free_generate} = generates
   let role = window.localStorage.getItem("role");
   const navigate = useNavigate();
   const [typeGeneration, setTypeGeneration] = useState("automatic");
@@ -109,6 +110,10 @@ const Generation = () => {
 	  navigate (`/login`)
 	}
   }, []);
+
+  useEffect(() => {
+    console.log('generates', free_generate)
+  }, [])
 
   return (
     <main className={styles.container}>

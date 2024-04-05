@@ -1,6 +1,8 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import ReactDom from "react-dom";
 import styles from "./Modal.module.scss";
+import NoAddModal from "../NoAddModal";
+import { context } from "../../containers/Layout";
 
 interface ModalProps {
   isModalVisible: boolean;
@@ -8,7 +10,10 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
+  const contextValue: any = useContext(context);
+  const { checkAddGenerates } = contextValue.checkAddGenerates;
   const [isRewarded, setIsRewarded] = React.useState(false);
+  const [isNoAddModalVisible, setIsNoAddModalVisible] = React.useState(false);
   const screenWidth = window.screen.width;
   const rewardGeneration = () => {
     if (screenWidth >= 768) {
@@ -64,12 +69,13 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
             <span className={styles.title}>Скачиваний не осталось</span>
             <span className={styles.subtitle}>Вы можете их приобрести</span>
             <div className={styles.buttonPrimary}>Приобрести скачивания</div>
-            <div className={styles.rewardGeneration} onClick={rewardGeneration}>
+            <div className={styles.rewardGeneration} onClick={checkAddGenerates ? rewardGeneration : () => setIsNoAddModalVisible(true)}>
               Генерации за рекламу
             </div>
           </div>
         </div>
       )}
+      <NoAddModal isModalVisible={isNoAddModalVisible} setIsModalVisible={setIsNoAddModalVisible} />
     </div>,
     document.getElementById("portal") as HTMLElement
   );
