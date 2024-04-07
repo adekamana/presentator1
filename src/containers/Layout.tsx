@@ -33,28 +33,7 @@ const Layout: FC = () => {
       }
 
       try {
-        const response = await axios.post(
-          `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
-        );
-        setGenerates(response.data);
-      } catch (error) {
-        console.error("Ошибка при отправке запроса:", error);
-      }
-    };
-
-    fetchData();
-	}, [])
-
-	useEffect(() => {
-		const fetchData = async () => {
-      const phoneNumber = window.localStorage.getItem("login");
-      var cleanedPhoneNumber = "";
-      if (phoneNumber) {
-        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
-      }
-
-      try {
-        const response = await axios.post(
+        const response = await axios.get(
           `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
         );
         setGenerates(response.data);

@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import styles from "./Modal.module.scss";
 import NoAddModal from "../NoAddModal";
 import { context } from "../../containers/Layout";
+import { useNavigate } from "react-router";
 
 interface ModalProps {
   isModalVisible: boolean;
@@ -14,6 +15,7 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
   const { checkAddGenerates } = contextValue.checkAddGenerates;
   const [isRewarded, setIsRewarded] = React.useState(false);
   const [isNoAddModalVisible, setIsNoAddModalVisible] = React.useState(false);
+  const navigate = useNavigate()
   const screenWidth = window.screen.width;
   const rewardGeneration = () => {
     if (screenWidth >= 768) {
@@ -68,7 +70,7 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
           <div className={styles.content}>
             <span className={styles.title}>Скачиваний не осталось</span>
             <span className={styles.subtitle}>Вы можете их приобрести</span>
-            <div className={styles.buttonPrimary}>Приобрести скачивания</div>
+            <div className={styles.buttonPrimary} onClick={() => navigate('/user/account')}>Приобрести скачивания</div>
             <div className={styles.rewardGeneration} onClick={checkAddGenerates ? rewardGeneration : () => setIsNoAddModalVisible(true)}>
               Генерации за рекламу
             </div>

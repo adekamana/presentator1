@@ -1,15 +1,20 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import styles from "./Presentation.module.scss";
 import axios from 'axios';
 import Header from "../../components/Header";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+import { context } from "../../containers/Layout";
 
 
 
 const Presentation = () => {
   let role = window.localStorage.getItem("role");
   let presentationLink = localStorage.getItem("presentationLink");
-
+  const contextValue = useContext(context);
+  const {generates} = contextValue
+  useEffect(() => {
+    console.log('contextValue', contextValue)
+  }, [])
   const handleDownload = () => {
     if (presentationLink) {
       window.location.href = presentationLink;
@@ -23,39 +28,39 @@ const Presentation = () => {
       fileName: "presa.pptx",
     },
   ];
-  const [data, setData] = useState({
-    free_generate: 0,
-    current_generate: 0,
-  });
+  // const [data, setData] = useState({
+  //   free_generate: 0,
+  //   current_generate: 0,
+  // });
     
   
-  useEffect(() => {
-    const fetchData = async () => {
-      const phoneNumber = window.localStorage.getItem('login');
-      var cleanedPhoneNumber = '';
-      if (phoneNumber) {
-        cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
-      }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const phoneNumber = window.localStorage.getItem('login');
+  //     var cleanedPhoneNumber = '';
+  //     if (phoneNumber) {
+  //       cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+  //     }
 
-      const serverData = {
-        phone_number: phoneNumber,
-      };
+  //     const serverData = {
+  //       phone_number: phoneNumber,
+  //     };
 
-      try {
-        const response = await axios.post(
-          `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
-        );
-        setData({
-          free_generate: response.data.free_generate,
-          current_generate: response.data.current_generate,
-        });
-      } catch (error) {
-        console.error('Ошибка при отправке запроса:', error);
-      }
-    };
+  //     try {
+  //       const response = await axios.get(
+  //         `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
+  //       );
+  //       setData({
+  //         free_generate: response.data.free_generate,
+  //         current_generate: response.data.current_generate,
+  //       });
+  //     } catch (error) {
+  //       console.error('Ошибка при отправке запроса:', error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const docViewerRef = useRef(null);
 
@@ -91,7 +96,7 @@ const Presentation = () => {
                   >
                     Скачать
                   </button>
-                  <span className={styles.footerLabel}>Осталось: <strong>{data.free_generate}</strong> скачиваний</span>
+                  <span className={styles.footerLabel}>Осталось: <strong>{generates.free_generate}</strong> скачиваний</span>
                  
                 </div>
 

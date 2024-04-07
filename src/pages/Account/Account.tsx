@@ -21,7 +21,7 @@ const Account: FC = () => {
   const navigate = useNavigate();
   const contextValue: any = useContext(context);
   const { checkAddGenerates } = contextValue.checkAddGenerates;
-  const { generates, setGenerates } = contextValue.generates;
+  const { generates, setGenerates } = contextValue;
   const screenWidth = window.screen.width;
   const [checked, setChecked] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -55,7 +55,6 @@ const Account: FC = () => {
   //   free_generate: 0,
   //   current_generate: 0,
   // });
-
   const rewardGeneration = () => {
     if (screenWidth >= 768) {
       window.yaContextCb.push(() => {
