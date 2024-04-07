@@ -21,7 +21,7 @@ const Account: FC = () => {
   const navigate = useNavigate();
   const contextValue: any = useContext(context);
   const { checkAddGenerates } = contextValue.checkAddGenerates;
-  const { generates, setGenerates } = contextValue;
+  // const { generates, setGenerates } = contextValue;
   const screenWidth = window.screen.width;
   const [checked, setChecked] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -51,10 +51,10 @@ const Account: FC = () => {
     setActiveBox(index === activeBox ? null : index);
   };
   // Берется из контекста
-  // const [generates, setGenerates] = useState<Generates>({
-  //   free_generate: 0,
-  //   current_generate: 0,
-  // });
+  const [generates, setGenerates] = useState<Generates>({
+    free_generate: 0,
+    current_generate: 0,
+  });
   const rewardGeneration = () => {
     if (screenWidth >= 768) {
       window.yaContextCb.push(() => {
@@ -97,30 +97,30 @@ const Account: FC = () => {
     }, 2000);
   };
   // Берется из контекста
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const phoneNumber = window.localStorage.getItem("login");
-  //     var cleanedPhoneNumber = "";
-  //     if (phoneNumber) {
-  //       cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
-  //     }
+  useEffect(() => {
+    const fetchData = async () => {
+      const phoneNumber = window.localStorage.getItem("login");
+      var cleanedPhoneNumber = "";
+      if (phoneNumber) {
+        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+      }
 
-  //     const serverData = {
-  //       phone_number: phoneNumber,
-  //     };
+      const serverData = {
+        phone_number: phoneNumber,
+      };
 
-  //     try {
-  //       const response = await axios.post(
-  //         `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
-  //       );
-  //       setGenerates(response.data);
-  //     } catch (error) {
-  //       console.error("Ошибка при отправке запроса:", error);
-  //     }
-  //   };
+      try {
+        const response = await axios.get(
+          `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
+        );
+        setGenerates(response.data);
+      } catch (error) {
+        console.error("Ошибка при отправке запроса:", error);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   const handleBuyGenerations = async () => {
     console.log("Купить генерации");
