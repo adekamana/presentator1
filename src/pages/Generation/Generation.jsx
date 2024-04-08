@@ -60,31 +60,30 @@ const Generation = () => {
     
     };
 
-    const updateGen = async () => {
-      try {
+    // const updateGen = async () => {
+    //   try {
 
-        const phoneNumber = window.localStorage.getItem("login");
-        var cleanedPhoneNumber = "";
-        if (phoneNumber) {
-           cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
-        } else {
-        }
-        const response = await axios.post(
-          `https://презентатор.рф/api/update_generates/?phone_number=${cleanedPhoneNumber}`
-        );
+    //     const phoneNumber = window.localStorage.getItem("login");
+    //     var cleanedPhoneNumber = "";
+    //     if (phoneNumber) {
+    //        cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+    //     } else {
+    //     }
+    //     const response = await axios.post(
+    //       `https://презентатор.рф/api/update_generates/?phone_number=${cleanedPhoneNumber}`
+    //     );
   
-        if (!response.ok) {
-          throw new Error("Failed to generate presentation");
-        }
+    //     if (!response.ok) {
+    //       throw new Error("Failed to generate presentation");
+    //     }
   
-        const responseData = await response.json();
-        localStorage.setItem("presentationLink", responseData);
-        navigate(`${checkRole()}`);
-      } catch (error) {
-      }
-    };
+    //     const responseData = await response.json();
+    //     localStorage.setItem("presentationLink", responseData);
+    //     navigate(`${checkRole()}`);
+    //   } catch (error) {
+    //   }
+    // };
  
-
   useEffect(() => {
     
     let interval;
@@ -136,12 +135,9 @@ const Generation = () => {
                   const data = {
                     promt: values.theme,
                     count_list: parseInt(values.slides, 10),
-                    type: typeGeneration,
+                    phone_number: window.localStorage.getItem("login").replace(/\D/g, ""),
                   };
-
-                  sendPostRequest(data);
-                  updateGen();
-                  
+                  sendPostRequest(data);                  
                 }}
               >
                 {({ errors, touched, handleSubmit }) => (

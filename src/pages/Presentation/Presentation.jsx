@@ -12,9 +12,6 @@ const Presentation = () => {
   let presentationLink = localStorage.getItem("presentationLink");
   const contextValue = useContext(context);
   const {generates} = contextValue
-  useEffect(() => {
-    console.log('contextValue', contextValue)
-  }, [])
   const handleDownload = () => {
     if (presentationLink) {
       window.location.href = presentationLink;

@@ -1,9 +1,11 @@
-import React, {FC, useState} from "react";
+import React, {FC, useContext, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss"
 import Logo from "../Logo";
 import content from "./Header.content.json";
 import MobileModal from "../MobileModal";
+import UserRepository from "../../api/repositories/userRepository";
+import { context } from "../../containers/Layout";
 interface HeaderProps {
 	role?: string | null;
 	isAuth?: boolean;
@@ -12,7 +14,26 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({generation, role}: HeaderProps) => {
 	const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 	const navigate = useNavigate();
-	
+	const contextValue: any = useContext(context);
+  const { setGenerates } = contextValue;
+	const checkGenerates = () => {
+		const fetchData = async () => {
+			    const phoneNumber = window.localStorage.getItem("login");
+			    var cleanedPhoneNumber = "";
+			    if (phoneNumber) {
+			      cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+			    }
+			    try {
+			      const response = await UserRepository.getGenerates(cleanedPhoneNumber);
+			      setGenerates(response.data);
+			    } catch (error) {
+			      console.error("Ошибка при отправке запроса:", error);
+			    }
+			  };
+		
+			  fetchData();
+	}
+
 	return (
 		<header className={styles.root}>
 			<Logo/>
@@ -44,7 +65,7 @@ const Header: FC<HeaderProps> = ({generation, role}: HeaderProps) => {
 
 										</div>
 
-										<div className={styles.buttonAccountText}>
+										<div className={styles.buttonAccountText} onClick={() => checkGenerates()}>
 											<span>{content.account}</span>
 										</div>
 
@@ -87,7 +108,7 @@ const Header: FC<HeaderProps> = ({generation, role}: HeaderProps) => {
 
 										</div>
 
-										<div className={styles.mobileButtonAccountText}>
+										<div className={styles.mobileButtonAccountText} onClick={() => checkGenerates()}>
 											<span>Кабинет</span>
 										</div>
 

@@ -4,6 +4,7 @@ import styles from "./Modal.module.scss";
 import NoAddModal from "../NoAddModal";
 import { context } from "../../containers/Layout";
 import { useNavigate } from "react-router";
+import UserRepository from "../../api/repositories/userRepository";
 
 interface ModalProps {
   isModalVisible: boolean;
@@ -12,7 +13,7 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
   const contextValue: any = useContext(context);
-  const { checkAddGenerates } = contextValue.checkAddGenerates;
+  const { generates, setGenerates } = contextValue;
   const [isRewarded, setIsRewarded] = React.useState(false);
   const [isNoAddModalVisible, setIsNoAddModalVisible] = React.useState(false);
   const navigate = useNavigate()
@@ -33,12 +34,42 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
           type: "rewarded",
           platform: "touch",
         });
-      })
+      });
     }
+    setTimeout(async () => {
+      setIsModalVisible(true);
+      const phoneNumber = window.localStorage.getItem("login");
+      var cleanedPhoneNumber = "";
+      if (phoneNumber) {
+        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+      }
+      try {
+        const response = await UserRepository.updateFreeGenerates(
+          cleanedPhoneNumber
+        );
+        setGenerates(response.data);
+      } catch (error) {
+        console.error("Ошибка при отправке запроса:", error);
+      }
+    }, 2000);;
+  };
 
-    setTimeout(() => {
-      setIsRewarded(true);
-    }, 2000);
+  const handleCheckAddsGenerates = async () => {
+    const phoneNumber = window.localStorage.getItem("login");
+    var cleanedPhoneNumber = "";
+    if (phoneNumber) {
+      cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+    }
+    try {
+      const response = await UserRepository.checkAddsGenerates(cleanedPhoneNumber);
+      if(response.data) {
+        rewardGeneration()
+      } else {
+        setIsNoAddModalVisible(true)
+      }
+    } catch (error) {
+      console.error("Ошибка при выполнении запроса:", error);
+    }
   };
 
   const handleClose = () => {
@@ -46,9 +77,6 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
     setIsRewarded(false);
   };
 
-  useEffect(() => {
-    console.log(isRewarded);
-  }, [isRewarded]);
   if (!isModalVisible) return null;
   return ReactDom.createPortal(
     <div className={styles.overlay}>
@@ -71,7 +99,7 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
             <span className={styles.title}>Скачиваний не осталось</span>
             <span className={styles.subtitle}>Вы можете их приобрести</span>
             <div className={styles.buttonPrimary} onClick={() => navigate('/user/account')}>Приобрести скачивания</div>
-            <div className={styles.rewardGeneration} onClick={checkAddGenerates ? rewardGeneration : () => setIsNoAddModalVisible(true)}>
+            <div className={styles.rewardGeneration} onClick={() => handleCheckAddsGenerates()}>
               Генерации за рекламу
             </div>
           </div>

@@ -1,12 +1,11 @@
-import React, {createContext, FC, memo, useEffect, useState} from "react";
-import Header from "../components/Header";
+import {createContext, FC, memo, useEffect, useState} from "react";
 import { Navigate, Outlet } from 'react-router-dom';
 import axios from "axios";
+import UserRepository from "../api/repositories/userRepository";
 
 
 export const context = createContext({})
 const Layout: FC = () => {
-	// TODO check auth
 	const isAuth = true
 	const ProtectedRoute = ({children}: any) => {
 		if(!isAuth) {
@@ -24,27 +23,6 @@ const Layout: FC = () => {
 		checkAddGenerates: false
 	})
 
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-  //     const phoneNumber = window.localStorage.getItem("login");
-  //     var cleanedPhoneNumber = "";
-  //     if (phoneNumber) {
-  //       cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
-  //     }
-
-  //     try {
-  //       const response = await axios.get(
-  //         `https://презентатор.рф/api/get_generates/?phone_number=${cleanedPhoneNumber}`
-  //       );
-  //       setGenerates(response.data);
-  //     } catch (error) {
-  //       console.error("Ошибка при отправке запроса:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-	// }, [])
-
 	useEffect(() => {
 		const fetchData = async () => {
       const phoneNumber = window.localStorage.getItem("login");
@@ -54,10 +32,8 @@ const Layout: FC = () => {
       }
 
       try {
-        const response = await axios.post(
-          `https://презентатор.рф/api/check_adds_generates/?phone_number=${cleanedPhoneNumber}`
-        );
-        setCheckAddGenerates(response.data)
+        const response = await UserRepository.getGenerates(cleanedPhoneNumber);
+        setGenerates(response.data);
       } catch (error) {
         console.error("Ошибка при отправке запроса:", error);
       }
