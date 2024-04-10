@@ -43,7 +43,7 @@ const Header: FC<HeaderProps> = ({generation, role}: HeaderProps) => {
 						!generation && (
 							<>
 								<div className={styles.menuItem}><a href="https://t.me/presentatorai/2">{content.faq}</a></div>
-								<div className={styles.menuItem}><a href="mailto:ai.presentator@gmail.com">{content.support}</a></div>
+								<div className={styles.menuItem}><a href="https://t.me/vlados_manager">{content.support}</a></div>
 							</>
 						)
 					}
