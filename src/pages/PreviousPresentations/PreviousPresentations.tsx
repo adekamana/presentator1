@@ -4,25 +4,30 @@ import PresentationCard from "../../components/PresentationCard";
 import Header from "../../components/Header";
 import UserRepository from "../../api/repositories/userRepository";
 import { useNavigate } from "react-router";
+import Loader from "../../components/Loader";
 
 const list = [];
 const PreviousPresentations: FC = () => {
   const role = localStorage.getItem("role");
   const navigate = useNavigate()
   const [presentations, setPresentations] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const phoneNumber = window.localStorage.getItem("login");
+    setIsLoading(true);
     const getPresentaions = async () => {
       var cleanedPhoneNumber = "";
       if (phoneNumber) {
         cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
       }
       try {
+        
         const response = await UserRepository.getPresentations(
           cleanedPhoneNumber
         );
         setPresentations(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Ошибка при отправке запроса:", error);
       }
@@ -32,7 +37,8 @@ const PreviousPresentations: FC = () => {
   return (
     <>
       <Header role={role} />
-      {presentations.length > 0 ? (
+      {isLoading && <Loader />}
+      {presentations.length > 0 && !isLoading ? (
         <div className={styles.container}>
           <section className={styles.info}>
             <img src="../images/infoIcon.png" alt="info" />
@@ -48,7 +54,11 @@ const PreviousPresentations: FC = () => {
           </section>
         </div>
       ) : (
-       <div className={styles.container}>
+       null
+      )}
+      {
+        presentations.length === 0 && !isLoading ? (
+          <div className={styles.container}>
           <div className={styles.empty}>
             <img src="../images/roll.png" alt="empty" />
             <span className={styles.emptyText}>Нет сгенерированных презентаций</span>
@@ -57,7 +67,8 @@ const PreviousPresentations: FC = () => {
             </div>
           </div>
        </div>
-      )}
+        ) : null
+      }
     </>
   );
 };
