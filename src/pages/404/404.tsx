@@ -31,7 +31,7 @@ const NotFound: FC = () => {
 
 
 			<div className={styles.imageSection}>
-				<img src='../images/roll.png' alt='paint' />
+				<img src="../../images/roll.png" alt='paint' />
 			</div>
 
 		</main>

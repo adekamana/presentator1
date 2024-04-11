@@ -7,6 +7,7 @@ const Account = lazy(() => import('../../pages/Account/Account'))
 const Generation = lazy(() => import('../../pages/Generation/Generation'))
 const NotFound = lazy(() => import('../../pages/404/404'))
 const Presentation = lazy(() => import('../../pages/Presentation/Presentation'))
+const PreviousPresentations = lazy(() => import('../../pages/PreviousPresentations/PreviousPresentations'))
 
 export const userRouter = [
 	{
@@ -29,6 +30,10 @@ export const userRouter = [
 			{
 				path: 'presentation',
 				element: <Presentation/>
+			},
+			{
+				path: 'my-presentations',
+				element: <PreviousPresentations/>
 			}
 		]
 	}

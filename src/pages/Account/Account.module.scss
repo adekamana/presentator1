@@ -80,8 +80,21 @@ margin-bottom: 8px;
 	font-weight: 600;
 	line-height: 125%;
 	letter-spacing: 0%;
+	margin-right: 8px;
 }
 
+.labelPointer {
+	color: rgb(185, 60, 166);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-right: 8px;
+	cursor: pointer;
+}
+.labelPointer:hover {
+		opacity: .7;
+}
 .buttonGroup{
 	display: flex;
 	justify-content: center;
@@ -409,6 +422,10 @@ margin-bottom: 8px;
 	}
 
 	.label {
+		font-size: 14px;
+	}
+
+	.labelPointer {
 		font-size: 14px;
 	}
 	.rewardGeneration {

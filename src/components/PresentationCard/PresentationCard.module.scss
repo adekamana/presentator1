@@ -1,0 +1,85 @@
+.card {
+	min-width: 400px;
+	background-color:  white;
+	height: 120px;
+	border-radius: 10px;
+	padding: 20px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	
+}
+
+.title{
+	color: rgb(21, 30, 45);
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 125%;
+	letter-spacing: 0%;
+	white-space: nowrap;
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	;
+}
+.form {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.date {
+	color: rgba(21, 30, 45, 0.4);
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+}
+
+.buttonPrimary{
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+	background: linear-gradient(-46.40deg, rgb(45, 19, 172),rgb(130, 59, 182) 27.851%,rgb(185, 60, 166) 68.162%,rgb(230, 186, 91) 104.703%);
+	color: rgb(255, 255, 255);
+	// шрифт
+	font-size: 14px;
+	line-height: 21px;
+	letter-spacing: 0%;
+	width: 60px;
+	height: 26px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+
+@media screen and (max-width: 920px) {
+	.card {
+		width: 100%;
+		min-width: 300px;
+		height: 120px;
+	}
+	.title {
+		font-size: 24px;
+	}
+	.date{
+		font-size: 12px;
+	}
+	
+}
+@media screen and (max-width: 430px) {
+	.card {
+		width: 100%;
+		min-width: 300px;
+		height: 110px;
+	}
+	.date{
+		display: flex;
+		align-items: end;
+	}
+	.title {
+		font-size: 24px;
+	}
+}

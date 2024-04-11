@@ -188,6 +188,7 @@ const Account: FC = () => {
 
                 <div className={styles.infoBox}>
                   <span className={styles.label}>Аккаунт</span>
+                  <span className={styles.labelPointer} onClick={() => navigate("/user/my-presentations")}>Мои презентации</span>
                   <div className={styles.infocontainer}>
                     <div className={styles.info}>
                       <div className={styles.iconContainer}>
@@ -256,14 +257,14 @@ const Account: FC = () => {
                   </span>
                 </div>
               </div>
-              <div className={styles.stat}>
+              {/* <div className={styles.stat}>
                 <a
                   href="http://презентатор.рф/user/homepage"
                   className={styles.link}
                 >
                   Перейти к генерациям...
                 </a>
-              </div>{" "}
+              </div>{" "} */}
               <div className={styles.accountCheckboxContainer}>
                 <input
                   type="checkbox"

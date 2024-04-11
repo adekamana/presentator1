@@ -12,4 +12,7 @@ export default class UserRepository {
 	static async checkAddsGenerates(number){
 		return instance.post(`check_adds_generates/?phone_number=${number}`)
 	}
+	static async getPresentations(number) {
+		return instance.get(`get_presentations/?phone_number=${number}`)
+	}
 }
