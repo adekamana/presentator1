@@ -45,15 +45,20 @@ const Generation = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to generate presentation");
+        if (response.status === 502) {
+          throw new Error("Bad Gateway: сервер недоступен");
+        } else if (response.status === 524) {
+          throw new Error("A Timeout Occurred: сервер не ответил вовремя");
+        } else {
+          throw new Error("Failed to generate presentation");
+        }
       }
-
+      
       const responseData = await response.json();
       localStorage.setItem("presentationLink", responseData);
       navigate(`${checkRole()}`);
     } catch (error) {
         setIsErrorModalVisible(true);
-        console.log(error);
     } finally {
       setIsGenerating(false);
     }
@@ -105,6 +110,7 @@ const Generation = () => {
 
       return () => clearInterval(interval);
     }
+
   }, [isGenerating]);
 
   useEffect(() => {
