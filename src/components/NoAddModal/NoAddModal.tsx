@@ -18,7 +18,7 @@ const NoAddModal: FC<ModalProps> = ({isModalVisible, setIsModalVisible}) => {
 				<img src="../images/x.svg" alt="close" />
 			</div>
 			<div className={styles.rewardContent}>
-				<div className={styles.rewardSubtitle}>Генерации за рекламу будут доступны в следующем месяце</div>
+				<div className={styles.rewardSubtitle}>Токены за рекламу будут доступны в следующем месяце</div>
 				<div className={styles.rewardButtonPrimary} onClick={handleClose}>
 					Продолжить
 				</div>

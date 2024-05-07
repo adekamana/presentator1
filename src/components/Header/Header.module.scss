@@ -18,7 +18,7 @@
 .menuGroup{
 	display: flex;
 	flex-direction: row;
-	margin-right: 16px;
+	margin: 0 16px;
 }
 
 .menuItem {
@@ -107,7 +107,7 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: 194px;
+	width: 174px;
 	height: 46px;
 	border-radius: 10px;
 	background-color: #151E2D;
@@ -117,14 +117,18 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 196px;
+	width: 176px;
 	height: 48px;
 	border-radius: 10px;
 	background: linear-gradient(90deg, rgb(0, 83, 255),rgb(91, 136, 229),rgb(82, 0, 255));
 }
 
+.buttonAccountContainer:nth-child(odd){
+	margin-right: 8px;
+}
+
 .buttonAccountText{
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 	line-height: 21px;
 }
@@ -223,6 +227,7 @@
 		height: 28px;
 		border-radius: 8px;
 		background-color: #151E2D;
+
 	}
 }
 @media screen and (max-width: 430px) {

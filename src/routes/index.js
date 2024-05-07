@@ -1,15 +1,16 @@
 
 import { lazy } from "react";
-import {createBrowserRouter, Navigate} from 'react-router-dom'
-import Layout from "../containers/Layout";
-import { routeDetection, routeHandler } from "../utils/functions";
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { routeDetection } from "../utils/functions";
 import { userRouter } from "./constants/userRouter";
 import { viewerRouter } from "./constants/viewerRouter";
+import RestoreAccess from "../pages/Auth/RestoreAccess";
 
 const Login = lazy(() => import('../pages/Auth/Login/Login'))
 const Registration = lazy(() => import('../pages/Auth/Registration/Registration'))
 const Confirm = lazy(() => import('../pages/Auth/Confirm/Confirm'))
 const NotFound = lazy(() => import('../pages/404/404'))
+const ConfirmPassword = lazy(() => import('../pages/Auth/ConfirmPassword/ConfirmPassword'))
 
 export const router = createBrowserRouter([
 	...userRouter,
@@ -23,15 +24,23 @@ export const router = createBrowserRouter([
 		element: <Registration />
 	},
 	{
-		path: '/confirmation',
+		path: '/confirmation-registration',
 		element: <Confirm />
 	},
 	{
-		path: '*',
-		element: <NotFound/>
+		path: '/confirmation-password',
+		element: <ConfirmPassword />
 	},
 	{
-    path: '/',
-    element: <Navigate to={routeDetection()} />,
-  }
+		path: '/restore-access',
+		element: <RestoreAccess />
+	},
+	{
+		path: '*',
+		element: <NotFound />
+	},
+	{
+		path: '/',
+		element: <Navigate to={routeDetection()} />,
+	}
 ])

@@ -140,6 +140,34 @@ margin-bottom: 8px;
     opacity: 1; /* Активное состояние кнопки */
     pointer-events: initial; /* Включение событий для активной кнопки */
 }
+.infoHint {
+	display: flex;
+	align-items: center;
+	border: 1px solid rgb(91, 136, 229);
+	border-radius: 10px;
+	padding: 6px;
+	img {
+		height: 40px;
+		height: 40px;
+		margin-right: 6px;
+	}
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.hintLink {
+	color: rgb(91, 136, 229);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.hint {
+	color: rgba(0, 0, 0, .6);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 145%;
+	letter-spacing: 0%;
+}
+
 .stat{
 	margin-top: 2px;
 	margin-bottom: 20px;
@@ -160,7 +188,6 @@ margin-bottom: 8px;
 }
 .accountFooter{
 	margin-top: 8px;
-	margin-left: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
@@ -182,7 +209,7 @@ margin-bottom: 8px;
 	height: 78px;
 	width: 420px;
 	border-radius: 10px;
-	margin-bottom: 48px;
+	margin-bottom: 24px;
 	margin-top: 8px;	
 
 	display: flex;
@@ -476,6 +503,8 @@ margin-bottom: 8px;
 		width: 255px;
 		height: 50px;
 	}
+
+
 	.priceContainer {
 		width: 124px;
 		height: 65px;
@@ -504,5 +533,20 @@ margin-bottom: 8px;
 		flex-direction: column;
 		margin-left: 3px;
 	}
+
+	.infoHint {
+		padding: 6px;
+		img {
+			height: 30px;
+			height: 30px;
+			margin-right: 6px;
+		}
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+	.hint {
+		font-size: 12px;
+	}
+
 }
 

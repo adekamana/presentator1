@@ -21,7 +21,7 @@ const ServerErrorModal: FC<ModalProps> = ({isModalVisible, setIsModalVisible}) =
         <div className={styles.rewardContent}>
           <div className={styles.rewardSubtitle}>Сейчас большая нагрузка на сервер, попробуйте пожалуйста позднее.</div>
 					<div className={styles.rewardSpan}>
- 						Мы начислили вам 2 генерации
+ 						Мы начислили Вам 2 токена
 					</div >
           <div className={styles.rewardButtonPrimary} onClick={handleClose}>
             Продолжить

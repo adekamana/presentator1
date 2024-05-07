@@ -5,10 +5,11 @@ import { Field, Formik } from "formik";
 import axios from "axios";
 import { Form, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal";
-import { validationSchema } from "./utils";
+import { validationSchema, getTimer } from "./utils";
 import cn from "classnames";
 import { context } from "../../containers/Layout";
 import ServerErrorModal from "../../components/ServerErrorModal";
+import StepProgressBar from "../../components/ProgressBar";
 
 const Generation = () => {
   const {generates} = useContext(context)
@@ -20,6 +21,9 @@ const Generation = () => {
   const [generationMessage, setGenerationMessage] = useState("Презентация генерируется...");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
+
+  const [loadTime, setLoadTime] = useState(0);
+  const [timeFromSlides, setTimeFromSlides] = useState(0);
 
   const handleRadioChange = (value) => {
     setTypeGeneration(value);
@@ -36,27 +40,30 @@ const Generation = () => {
   const sendPostRequest = async (data) => {
     try { 
       setIsGenerating(true);
-      const response = await fetch("https://презентатор.рф/api2/generate/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      setTimeFromSlides(data.count_list)
+      let timer = getTimer(data.count_list) * 1000
+      await new Promise(resolve => setTimeout(resolve, timer));
+      // const response = await fetch("https://презентатор.рф/api2/generate/", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(data),
+      // });
 
-      if (!response.ok) {
-        if (response.status === 502) {
-          throw new Error("Bad Gateway: сервер недоступен");
-        } else if (response.status === 524) {
-          throw new Error("A Timeout Occurred: сервер не ответил вовремя");
-        } else {
-          throw new Error("Failed to generate presentation");
-        }
-      }
+      // if (!response.ok) {
+      //   if (response.status === 502) {
+      //     throw new Error("Bad Gateway: сервер недоступен");
+      //   } else if (response.status === 524) {
+      //     throw new Error("A Timeout Occurred: сервер не ответил вовремя");
+      //   } else {
+      //     throw new Error("Failed to generate presentation");
+      //   }
+      // }
       
-      const responseData = await response.json();
-      localStorage.setItem("presentationLink", responseData);
-      navigate(`${checkRole()}`);
+      // const responseData = await response.json();
+      // localStorage.setItem("presentationLink", responseData);
+      // navigate(`${checkRole()}`);
     } catch (error) {
         setIsErrorModalVisible(true);
     } finally {
@@ -88,30 +95,44 @@ const Generation = () => {
     //   } catch (error) {
     //   }
     // };
- 
+
+  
+
   useEffect(() => {
-    
     let interval;
+      // let messages = [
+    //   "Почти готово, пара минут осталось!",
+    //   "Осталось совсем чуть-чуть!",
+    //   "Подбираем картинки для вас!",
+    //   "Всего пару минут и все будет готово!",
+    //   "Минутка терпения, мы почти закончили!"
+    // ];
 
+    // let index = 0;
+    // interval = setInterval(() => {
+    //   setGenerationMessage(messages[index]);
+    //   index = (index + 1) % messages.length;
+    // }, 3500);
     if (isGenerating) {
-      let messages = [
-        "Почти готово, пара минут осталось!",
-        "Осталось совсем чуть-чуть!",
-        "Подбираем картинки для вас!",
-        "Всего пару минут и все будет готово!",
-        "Минутка терпения, мы почти закончили!"
-      ];
-
-      let index = 0;
       interval = setInterval(() => {
-        setGenerationMessage(messages[index]);
-        index = (index + 1) % messages.length;
-      }, 3500);
-
+        setLoadTime(prevLoadTime => {
+          if (prevLoadTime < 100) {
+            let step = 1 / getTimer(timeFromSlides);
+            let nextLoadTime = prevLoadTime + step
+            return nextLoadTime
+          } else {
+            clearInterval(interval);
+            return 100;
+          }
+        });
+      }, 7); // так и не понял от чего зависит задержка, подбором сделал 7, иначе компонент загрузки отрабатывает не совсем корректно, если получится отдебажить - будет круто
       return () => clearInterval(interval);
+    } else {
+      clearInterval(interval);
+      setTimeFromSlides(0);
+      setLoadTime(0);
     }
-
-  }, [isGenerating]);
+  }, [isGenerating, loadTime]);
 
   useEffect(() => {
 	if (role) {
@@ -159,17 +180,17 @@ const Generation = () => {
                       />
 
                       <label className={cn(styles.label, { [styles.labelError]: errors.slides && touched.slides })}>
-                        Количество слайдов (от 2 до 15)
+                        Количество слайдов (от 4 до 17)
                       </label>
                       <Field
                         name="slides"
                         type="number"
-                        min="2"
-                        max="15"
+                        min="4"
+                        max="17"
                         placeholder="Укажите кол-во слайдов"
                         onInput={(e) => {
-                          const maxLimit = 15;
-                          const inputVal = parseInt(e.target.value) || 2;
+                          const maxLimit = 17;
+                          const inputVal = parseInt(e.target.value) || 4;
                           const sanitizedVal = Math.min(maxLimit, inputVal);
                           e.target.value = sanitizedVal.toString();
                         }}
@@ -213,24 +234,25 @@ const Generation = () => {
                         </div>
                       </div> */}
 
-                      {isGenerating ? (
+                      {(isGenerating) ? (
                         <div className={styles.labelgen}>
-                          <label >
-                            {generationMessage}
-                          </label>
+                          <StepProgressBar load={loadTime} />
                         </div>
                       ) : (
                         <div className={styles.buttonContainer}>
                           {/*
                           TODO: Применить метод для начала генерации
                           */}
-                          <button type="submit" onClick={free_generate ? handleSubmit : () => setIsModalVisible(true)} className={styles.button}>
+                          <button type="submit" onClick={!free_generate ? handleSubmit : () => setIsModalVisible(true)} className={styles.button}>
                             Начать магию
                           </button>
+                          <span className={styles.tokenPrice}>
+                            5 токенов
+                          </span>
                         </div>
                       )}
                      
-                    </Form>
+                    </Form>       
                   </>
                 )}
               </Formik>

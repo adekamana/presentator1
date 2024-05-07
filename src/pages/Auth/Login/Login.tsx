@@ -13,24 +13,25 @@ const Login: FC = () => {
 	const navigate = useNavigate()
 	const role = window.localStorage.getItem('role')
 	const [showErrorText, setShowErrorText] = useState(false);
+	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
 	return (
 		<main className={styles.container}>
 			<div className={styles.opacityBox}>
 				<div className={styles.headerContainer}>
-					<Header role={role}/>
+					<Header role={role} />
 				</div>
 				<div className={styles.content}>
 					<div className={styles.logoContainer}>
-						<Logo/>
+						<Logo />
 					</div>
-					<Formik 
+					<Formik
 						validationSchema={validationSchema}
 						initialValues={{
-							login:'',
+							login: '',
 							password: ''
 						}}
-					
+
 						onSubmit={async (values, { resetForm }) => {
 							const phoneNumber = values.login;
 							const password = values.password;
@@ -38,19 +39,19 @@ const Login: FC = () => {
 							const encodedPhoneNumber = encodeURIComponent(cleanedPhoneNumber);
 							const encodedPassword = encodeURIComponent(password);
 							const url = `https://презентатор.рф/api/check_credentials/?phone_number=${encodedPhoneNumber}&password=${encodedPassword}`;
-							
+
 							try {
 								const response = await axios.post(url);
 								if (response.data.status === "success") {
 									window.localStorage.setItem("role", "user");
 									window.localStorage.setItem("isAuth", "true");
-									window.localStorage.setItem('login', phoneNumber); 
+									window.localStorage.setItem('login', phoneNumber);
 									navigate("/user/homepage");
 									resetForm();
 								} else {
 									setShowErrorText(true); // Показываем текст ошибки
 								}
-							} catch(error) {
+							} catch (error) {
 								setShowErrorText(true);
 							}
 						}}
@@ -59,26 +60,26 @@ const Login: FC = () => {
 							<Form className={styles.form}>
 								<div className={styles.formContainer}>
 									<div className={styles.title}>Вход</div>
-									
-									
+
+
 									<div className={styles.subtitle}>
-                    <span className={styles.subtitleLabel}>Еще нет аккаунта?</span>
-                    <span 
-                      className={styles.subtitleLink}
-                      onClick={() => navigate('/registration')}
-                    >
-                      Зарегистрироваться
-                    </span>
-                  </div>
-				  <label className={cn(styles.label, {[styles.labelError]: errors.login && touched.login})}>
-										Номер телефона привязанный к Telegram
+										<span className={styles.subtitleLabel}>Еще нет аккаунта?</span>
+										<span
+											className={styles.subtitleLink}
+											onClick={() => navigate('/registration')}
+										>
+											Зарегистрироваться
+										</span>
+									</div>
+									<label className={cn(styles.label, { [styles.labelError]: errors.login && touched.login })}>
+										Номер телефона
 									</label>
 									<div className={styles.inputWithPrefix}>
 										<div className={styles.prefix}>+7</div>
 										<Field
 											name="login"
 											placeholder="(999) 999-99-99"
-											className={cn(styles.registerInput, {[styles.inputError]: errors.login && touched.login})}
+											className={cn(styles.registerInput, { [styles.inputError]: errors.login && touched.login })}
 										>
 											{({ field }: { field: any }) => (
 												<InputMask
@@ -86,21 +87,25 @@ const Login: FC = () => {
 													mask="(999) 999-99-99"
 													placeholder="(999) 999-99-99"
 												>
-													
-													{(inputProps: any) => <input {...inputProps} className={styles.registerInput} />}
+
+													{(inputProps: any) => <input {...inputProps} className={cn(styles.registerInput, { [styles.inputError]: errors.login && touched.login })} />}
 												</InputMask>
 											)}
 										</Field>
 									</div>
-									<label className={cn(styles.label, {[styles.labelError]: errors.password && touched.password})}>
+									<label className={cn(styles.label, { [styles.labelError]: errors.password && touched.password })}>
 										Пароль
 									</label>
-									<Field 
-										name='password' 
-										type='password' 
-										placeholder='Пароль' 
-										className={cn(styles.loginInput, {[styles.inputError]: errors.password && touched.password})}
-									/>
+									<div className={styles.inputWithIcon}>
+										<Field
+											name='password'
+											type={isPasswordVisible ? 'text' : 'password'}
+											placeholder='Пароль'
+											className={cn(styles.loginInput, { [styles.inputError]: errors.password && touched.password })}
+										/>
+										<img src={isPasswordVisible ? '../images/eyeOff.svg' : '../images/eye.svg'} className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
+									</div>
+
 									{showErrorText ? (
 										<span className={styles.errorText}>Неверный пароль</span>
 									) : <div className={styles.errorTextSizeBlock}></div>}
@@ -108,7 +113,7 @@ const Login: FC = () => {
 										<button type='submit'>Войти</button>
 									</div>
 									<span className={styles.forgot}>
-										<a href="https://t.me/presentator_helper_bot" target="_blank" rel="noopener noreferrer" className={styles.subtitleLink}>Забыли пароль?</a>
+										<a onClick={() => navigate('/restore-access')} className={styles.subtitleLink}>Забыли пароль?</a>
 									</span>
 								</div>
 							</Form>

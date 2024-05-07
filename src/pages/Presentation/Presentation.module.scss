@@ -62,19 +62,21 @@
 	line-height: 125%;
 	letter-spacing: 0%;
 	text-align: center;
-	margin-bottom: 45px;
+	margin-bottom: 24px;
 }
 
 .preview{
 	width: 500px;
 	height: 400px;
+
 }
+
 .buttonContainer{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: start;
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 .presentationButton{
@@ -194,6 +196,23 @@
 	display: none;
 }
 
+.suggestion {
+	display: flex;
+	align-items: center;
+	margin-top: 8px;
+	img {
+		width: 30px;
+		height: 30px;
+		margin-right: 8px;
+	}
+}
+
+.suggestionLabel {
+	color: rgb(91, 136, 229);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 @media screen and (max-width: 1920px) {
 	.opacityBox{
 		display: flex;
@@ -220,7 +239,6 @@
 @media screen and (max-width: 920px) {
 	.presentation {
 		width: 680px;
-		min-width: 680px;
 		padding: 38px;
 		box-sizing: border-box;
 	}
@@ -228,13 +246,10 @@
 }
 
 @media screen and (max-width: 430px) {
-	.content {
-			width: 343px;
-	}
+
 	.presentation {
 		width: 343px;
-		padding: 38px 0;
-		box-sizing: border-box;
+		padding: 24px;
 	}
 	.title {
 		font-size: 27px;
@@ -249,7 +264,8 @@
 	}
 	.buttonGroup {
 		button {
-			width: 145px;
+			font-size: 14px;
+			width: 120px;
 			height: 44px;
 		}
 	}
@@ -339,6 +355,16 @@
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.suggestion {
+	img {
+		width: 20px;
+		height: 20px;
+	}
+}
+.suggestionLabel {
+	font-size: 12px;
 }
 
 }

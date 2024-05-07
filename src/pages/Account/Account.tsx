@@ -117,7 +117,6 @@ const Account: FC = () => {
   // }, []);
 
   const handleBuyGenerations = async () => {
-    console.log("Купить генерации");
     const phoneNumber = window.localStorage.getItem("login");
     var cleanedPhoneNumber = "";
     if (phoneNumber) {
@@ -210,7 +209,13 @@ const Account: FC = () => {
                 </div>
 
                 <div className={styles.generationBox}>
-                  <span className={styles.label}>Покупка генераций</span>
+                  <span className={styles.label}>Покупка токенов</span>
+                  
+                  <div className={styles.infoHint}>
+                    <img src="../images/infoIcon.png" alt="hint" />
+                    <span className={styles.hint}>Токены позволяют вам покупать генерации и дополнительные функции. Ознакомьтесь с ними на <span onClick={() => navigate("/user/generation")} className={styles.hintLink}>странице</span></span>
+                  </div>
+
                   <div className={styles.prices}>
                     {prices.map((price: any, index: number) => (
                       <div
@@ -241,7 +246,7 @@ const Account: FC = () => {
                     className={styles.rewardGeneration}
                     onClick={() => {handleCheckAddsGenerates()}}
                   >
-                    Генерации за рекламу
+                    Токены за рекламу
                   </div>
                 </div>
 
@@ -249,7 +254,7 @@ const Account: FC = () => {
                 <div className={styles.accountFooter}>
                   <span>
                     Осталось: <strong>{generates?.free_generate}</strong>{" "}
-                    генераций
+                    токенов
                   </span>
                   <span>
                     Скачано: <strong>{generates?.current_generate}</strong>{" "}

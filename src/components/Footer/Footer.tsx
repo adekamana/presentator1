@@ -30,7 +30,7 @@ const Footer: FC = () => {
 							)
 						}
 		
-						<span className={styles.footerInfoLink}>Купить генерации</span>
+						<span className={styles.footerInfoLink}>Купить токены</span>
 						{
 							role && role === 'user' ? (
 								<span className={styles.footerInfoLink} onClick={() => navigate('/user/account')}>Личный кабинет</span>
@@ -70,7 +70,7 @@ const Footer: FC = () => {
 									<span className={styles.footerInfoLink} onClick={() => navigate('/viewer/generation')}>Сгенерировать презентацию</span>
 								)
 							}
-								<span className={styles.footerInfoLink}>Купить генерации</span>
+								<span className={styles.footerInfoLink}>Купить токены</span>
 								{
 								role && role === 'user' ? (
 									<span className={styles.footerInfoLink} onClick={() => navigate('/user/account')}>Личный кабинет</span>

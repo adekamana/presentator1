@@ -12,7 +12,7 @@ const ButtonComponent: FC<ButtonProps> = ({ selected, onClick }) => {
       className={`${styles.buttonGroup} ${!selected ? styles.transparentButton : ''}`}
       onClick={onClick}
     >
-      <div className={styles.buttonPrimary}>Купить генерации</div>
+      <div className={styles.buttonPrimary}>Купить токены</div>
     </div>
   );
 };

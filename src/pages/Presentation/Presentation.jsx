@@ -81,7 +81,10 @@ const Presentation = () => {
                   />
                 )}
               </div>
-
+              <div className={styles.suggestion}>
+                <img src="../images/infoIcon.png"/>
+               <span className={styles.suggestionLabel}>Ваши предложения по улучшению сервиса</span>
+              </div>
               <div className={styles.buttonContainer}>
                 <div className={styles.sizeBlock}></div>
 
@@ -93,7 +96,7 @@ const Presentation = () => {
                   >
                     Скачать
                   </button>
-                  <span className={styles.footerLabel}>Осталось: <strong>{generates.free_generate}</strong> скачиваний</span>
+                  <span className={styles.footerLabel}>Осталось: <strong>{generates.free_generate}</strong> токенов</span>
                  
                 </div>
 

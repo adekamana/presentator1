@@ -81,12 +81,29 @@ input[type=number] {
 }
 .subtitle{
 	color: rgba(0, 0, 0, 0.8);
-	margin-bottom: 40px;
-	font-size: 18px;
+	margin-bottom: 16px;
+	font-size: 16px;
 	font-weight: 400;
 	line-height: 125%;
 	letter-spacing: 0%;
 	text-align: center;
+}
+
+.hint {
+	display: flex;
+	align-items: start;
+	margin-bottom: 16px;
+}
+
+.hintLabel {
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 12px;
+	text-align: center;
+}
+
+.hintImage {
+	width: 20px;
+	height: 20px;
 }
 
 .subtitleLink {
@@ -255,7 +272,7 @@ button:hover {
 		//size
 		width: 343px;
 		min-width: 343px;
-		height: 391px;
+		height: 420px;
 		min-height: 391px;
 		border-radius: 20px;
 

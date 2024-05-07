@@ -4,7 +4,6 @@
 	src: url('../../../assets/fonts/Benzin/Benzin-Bold.ttf')format('ttf');
 }
 
-
 .container{
 	height: 100vh;
 	width: 100vw;
@@ -12,43 +11,26 @@
 	background-size: cover;
 	background-position: center;
 	position: absolute;
+	left: 0;
 	top:0;
-	left:0;
 	overflow: hidden;
 }
-.errorText{
-	color: red;
-	font-size: 14px;
-}
-.errorTextSizeBlock {
-	height: 14px;
-}
-.prefix {
-	padding: 7px;
-	font-size: 22px;
-	margin-top: -29px;
-	margin-left: 16px;
-	}
 .inputWithPrefix {
 	display: flex;
 	align-items: center;
-	}
-	  
+  }
+  
+.prefix {
+padding: 15px;
+font-size: 22px;
+margin-top: -29px;
+}
 .opacityBox{
 	background: rgba(21, 30, 45, 0.5);
 	width: 100%;
 	height: 100%;
+}
 
-}
-.registerInput {
-	margin-bottom: 24px;
-	border: 2px solid rgb(91, 136, 229);
-	border-radius: 10px;
-	padding: 12px;
-	text-decoration: none;
-	outline: none;
-	font-size: 17px;
-}
 .content{
 	width: 100vw;
 	height: 100vh;
@@ -56,7 +38,6 @@
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: row;
-	text-align: center;
 }
 
 // form
@@ -80,6 +61,7 @@
 	flex-direction: column;
 	margin-bottom: 36px;
 	width: 360px;
+	text-align: center;
 }
 
 .title{
@@ -87,10 +69,12 @@
 	font-weight: 700;
 	line-height: 125%;
 	letter-spacing: 0%;
-	margin-bottom: 16px;
+	margin-bottom: 10px;
+	text-align: center;
 }
 .subtitle{
 	margin-bottom: 40px;
+	text-align: center;
 }
 
 .subtitleLabel{
@@ -99,6 +83,7 @@
 	line-height: 125%;
 	letter-spacing: 0%;
 	margin-right: 8px;
+	text-align: center;
 }
 
 .subtitleLink {
@@ -116,40 +101,33 @@
 	justify-content: center;
 }
 
-.headerContainer {
-	display: none;
-}
 .label {
 	color: rgb(91, 136, 229);
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: 400;
 	line-height: 125%;
 	letter-spacing: 0%;
-	margin-bottom: 4px;
+	margin-bottom: 15px;
+	margin-left: -10px;
 }
 
-.loginInput {
-	margin-bottom: 28px;
+.restoreAccessInput {
+	color: rgba(0, 0, 0, 0.8);
+	margin-bottom: 24px;
 	border: 2px solid rgb(91, 136, 229);
 	border-radius: 10px;
-	padding: 10px;
+	padding: 12px;
 	text-decoration: none;
 	outline: none;
-	width: 218px;
-	height: 25px;
-	margin-left: 55px;
-	
+	font-size: 17px;
 }
 
-.loginInput[placeholder] {
-	color: rgba(21, 30, 45, 0.4);
-	font-size: 16px;
-	font-weight: 400;
+input[placeholder] {
+	color: rgba(0, 0, 0, 0.8);
+	font-size: 17px;
+	font-weight: 500;
 	line-height: 19px;
 	letter-spacing: 0%;
-}
-:focus::placeholder {
-  color: transparent;
 }
 
 button{
@@ -172,11 +150,6 @@ button:hover {
 	opacity: 0.9;
 }
 
-.formFooter{
-	display: flex;
-	justify-content: center;
-}
-
 .buttonContainer{
 	display: flex;
 	justify-content: center;
@@ -188,12 +161,12 @@ button:hover {
 	font-weight: 400;
 	line-height: 125%;
 	letter-spacing: 0%;
-	margin-right: 8px;
+	margin-right: 15px;
 }
 
 .restore{
 	color: rgb(91, 136, 229);
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 400;
 	line-height: 125%;
 	letter-spacing: 0%;
@@ -213,7 +186,7 @@ button:hover {
 
 	background-image: url("../../../../public/images/error.svg");
 	background-repeat: no-repeat;
-	background-position: 328px 50%;
+	background-position: 322px 50%;
 	:focus::placeholder {
 		color: transparent;
 	}
@@ -225,31 +198,13 @@ button:hover {
 	font-weight: 400;
 	line-height: 125%;
 	letter-spacing: 0%;
-	margin-bottom: 4px
+	margin-bottom: 15px
 }
 
-.inputWithIcon {
-	display: flex;
-	align-items: center;
-	position: relative;
-	.loginInput{
-		margin: left 55px;
-		margin-bottom: 0;
-	}
+.headerContainer {
+	display: none;
 }
-
-.icon {
-	position: absolute;
-	width: 26px;
-	height: 26px;
-	opacity: 0.5;
-	right: 70px;
-	cursor: pointer;
-}
-
 //adaptive
-
-
 
 @media screen and (max-width: 1024px) {
 	.form{
@@ -262,12 +217,9 @@ button:hover {
 		padding: 40px;
 		box-sizing: border-box;
 	}
-	.icon{
-		right: 50px;
-	}
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 920px) { 
 	.logoContainer{
 		display: none;
 	}
@@ -282,80 +234,72 @@ button:hover {
 	.inputError{
 		background-position: 305px 50%;
 	}
-
 }
+
 @media screen and (max-width: 430px) {
-
-	.form{
-		//size
-		width: 343px;
-		min-width: 343px;
-		height: 400px;
-		min-height: 400px;
-		border-radius: 20px;
-
+	.opacityBox{
+		display: flex;
+		flex-direction: column;
+	}
+	.logoContainer{
+		display: none;
 	}
 	.content {
 		display: flex;
 		align-items: start;
 		height: 580px;
 	}
-	.formContainer {
-		padding: 30px;
-		margin: 0;
+	.form{
+		//size
+		width: 343px;
+		min-width: 343px;
+		height: 366px;
+		min-height: 366px;
+		border-radius: 20px
 	}
+	.formContainer{
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 36px;
+		width: 400px;
+		text-align: center;
+	}
+	
 	.title {
 		font-size: 27px;
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
 	.subtitle {
-		margin-bottom: 25px;
+		margin-bottom: 40px;
 	}
 	.subtitleLabel {
-		font-size: 15px;
+		font-size: 17px;
 	}
 	.subtitleLink {
-		font-size: 15px;
+		font-size: 17px;
 	}
-
 	.label {
-		font-size: 12px;
+		font-size: 11px;
+		margin: 5px;
 	}
+	.restoreAccessInput {
+		width: 180px;
+		margin-bottom: 16px;
+		margin-left: -12px;
+		color: black;
+	}
+	  
 	.prefix {
-		padding: 7px;
-		font-size: 19px;
-		margin-top: -25px;
-		margin-left: -7px;
-		}
-	.loginInput {
-		width: 230px;
-		height: 36px;
-		padding: 0 10px;
-		margin-left: 30px;
-		height: 44px;
-		margin-bottom: 15px;
+		padding: 20px;
+		font-size: 18px;
+		margin-top: -20px;
 	}
-
-	.registerInput {
-		width: 100%;
-		height: 36px;
-		padding: 0 10px;
-		height: 44px;
-		margin-bottom: 15px;
-	}
-
 	.buttonContainer {
 		button {
-			width: 124px;
+			width: 142px;
 			height: 44px;
+			margin: 16px 0 ;
 			font-size: 16px;
 		}
-	}
-	.forgot {
-		font-size: 14px;
-	}
-
-	.icon {
-		right: 10px;
 	}
 }
