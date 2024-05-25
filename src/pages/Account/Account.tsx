@@ -157,22 +157,22 @@ const Account: FC = () => {
   };
 
   const handleCheckAddsGenerates = async () => {
-      const phoneNumber = window.localStorage.getItem("login");
-      var cleanedPhoneNumber = "";
-      if (phoneNumber) {
-        cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+    const phoneNumber = window.localStorage.getItem("login");
+    var cleanedPhoneNumber = "";
+    if (phoneNumber) {
+      cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+    }
+    try {
+      const response = await UserRepository.checkAddsGenerates(cleanedPhoneNumber);
+      if (response.data) {
+        rewardGeneration()
+      } else {
+        setIsNoAddModalVisible(true)
       }
-      try {
-        const response = await UserRepository.checkAddsGenerates(cleanedPhoneNumber);
-        if(response.data) {
-          rewardGeneration()
-        } else {
-          setIsNoAddModalVisible(true)
-        }
-      } catch (error) {
-        console.error("Ошибка при выполнении запроса:", error);
-      }
-    };
+    } catch (error) {
+      console.error("Ошибка при выполнении запроса:", error);
+    }
+  };
 
   return (
     <main className={styles.container}>
@@ -208,9 +208,15 @@ const Account: FC = () => {
                   </div>
                 </div>
 
+
+                <div className={styles.infoHint} style={{ display: 'flex', justifyContent: 'center' }} onClick={() => navigate("/user/referral")}>
+                  <span className={styles.labelPointer}>Реферальная программа</span>
+                </div>
+
+
                 <div className={styles.generationBox}>
                   <span className={styles.label}>Покупка токенов</span>
-                  
+
                   <div className={styles.infoHint}>
                     <img src="../images/infoIcon.png" alt="hint" />
                     <span className={styles.hint}>Токены позволяют вам покупать генерации и дополнительные функции. Ознакомьтесь с ними на <span onClick={() => navigate("/user/generation")} className={styles.hintLink}>странице</span></span>
@@ -220,22 +226,19 @@ const Account: FC = () => {
                     {prices.map((price: any, index: number) => (
                       <div
                         key={index}
-                        className={`${styles.priceContainer} ${
-                          index === activeButton ? styles.activeButton : ""
-                        }`}
+                        className={`${styles.priceContainer} ${index === activeButton ? styles.activeButton : ""
+                          }`}
                         onClick={() => handleButtonClick(index)}
                       >
                         <span
-                          className={`${styles.priceNumber} ${
-                            index === activeButton ? styles.activeText : ""
-                          }`}
+                          className={`${styles.priceNumber} ${index === activeButton ? styles.activeText : ""
+                            }`}
                         >
                           {price.price}
                         </span>
                         <span
-                          className={`${styles.priceValue} ${
-                            index === activeButton ? styles.activeText : ""
-                          }`}
+                          className={`${styles.priceValue} ${index === activeButton ? styles.activeText : ""
+                            }`}
                         >
                           {price.value}
                         </span>
@@ -244,7 +247,7 @@ const Account: FC = () => {
                   </div>
                   <div
                     className={styles.rewardGeneration}
-                    onClick={() => {handleCheckAddsGenerates()}}
+                    onClick={() => { handleCheckAddsGenerates() }}
                   >
                     Токены за рекламу
                   </div>

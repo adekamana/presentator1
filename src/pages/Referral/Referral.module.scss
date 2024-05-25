@@ -1,0 +1,142 @@
+.container{
+	height: 100vh;
+	width: 100vw;
+	background-image: url("../../../public/images/accountBackground.png"), url("../../../public/images/greet.png");
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	left: 0;
+	top:0;
+}
+
+.opacityBox{
+	background: rgba(21, 30, 45, 0.5);
+	width: 100%;
+	height: 100%;
+}
+
+.contentBox{
+	padding: 0;
+	overflow-y: scroll;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.referral {
+	background-color: white;
+	border-radius: 20px;
+	width: 540px;
+	min-width: 540px;
+}
+
+.title {
+	color: rgb(21, 30, 45);
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 125%;
+	letter-spacing: 0%;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	padding: 60px
+}
+
+.label {
+	color: rgba(21, 30, 45, 0.4);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
+	margin-right: 8px;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgb(91, 136, 229);
+	border-radius: 10px;
+	padding: 6px;
+	position: relative;
+	img {
+		height: 40px;
+		height: 40px;
+		margin-right: 6px;
+	}
+	margin-top: 8px;
+	margin-bottom: 8px;
+	min-height: 48px;
+}
+
+.code {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	cursor: pointer;
+	span {
+		color: rgb(21, 30, 45);
+		font-size: 24px;
+		font-weight: 600;
+		line-height: 125%;
+		letter-spacing: .6rem;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 1920px) {
+	.opacityBox{
+		display: flex;
+		justify-content: center;
+	}
+  .contentBox{
+    overflow-x: hidden;
+    width: 1440px;
+  }
+}
+
+@media screen and (max-width: 2560px) {
+	.opacityBox{
+		display: flex;
+		justify-content: center;
+	}
+  .contentBox{
+    overflow-x: hidden;
+    width: 1440px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+	.referral {
+		width: 557px;
+		min-width: 557px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.referral {
+		width: 343px;
+		min-width: 343px;
+	}
+	.title {
+		font-size: 27px;
+		margin-bottom: 8px;
+	}
+	.form{
+		display: flex;
+		flex-direction: column;
+		padding: 40px
+	}
+
+	.label {
+		font-size: 14px;
+	}
+}

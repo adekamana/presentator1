@@ -39,21 +39,24 @@ const Login: FC = () => {
 							const encodedPhoneNumber = encodeURIComponent(cleanedPhoneNumber);
 							const encodedPassword = encodeURIComponent(password);
 							const url = `https://презентатор.рф/api/check_credentials/?phone_number=${encodedPhoneNumber}&password=${encodedPassword}`;
-
-							try {
-								const response = await axios.post(url);
-								if (response.data.status === "success") {
-									window.localStorage.setItem("role", "user");
-									window.localStorage.setItem("isAuth", "true");
-									window.localStorage.setItem('login', phoneNumber);
-									navigate("/user/homepage");
-									resetForm();
-								} else {
-									setShowErrorText(true); // Показываем текст ошибки
-								}
-							} catch (error) {
-								setShowErrorText(true);
-							}
+							// try {
+							// 	const response = await axios.post(url);
+							// 	if (response.data.status === "success") {
+							// 		window.localStorage.setItem("role", "user");
+							// 		window.localStorage.setItem("isAuth", "true");
+							// 		window.localStorage.setItem('login', phoneNumber);
+							// 		navigate("/user/homepage");
+							// 		resetForm();
+							// 	} else {
+							// 		setShowErrorText(true); // Показываем текст ошибки
+							// 	}
+							// } catch (error) {
+							// 	setShowErrorText(true);
+							// }
+							window.localStorage.setItem("role", "user");
+							window.localStorage.setItem("isAuth", "true");
+							window.localStorage.setItem('login', phoneNumber);
+							navigate("/user/homepage");
 						}}
 					>
 						{({ errors, touched }) => (

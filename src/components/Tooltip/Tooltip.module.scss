@@ -1,0 +1,23 @@
+.tooltip.show {
+	background-color: #9923f455;
+	padding: 4px;
+	border-radius: 6px;
+  display: flex;
+  position: absolute;
+  bottom: -30px;
+  right: 24px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+	span {
+		color: rgba(21, 30, 45, 0.4);
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 125%;
+		letter-spacing: 0%;
+		margin-right: 8px;
+	}
+}
+
+.tooltip.hide {
+  opacity: 0;
+}
