@@ -42,35 +42,43 @@ const Generation = () => {
       setIsGenerating(true);
       setTimeFromSlides(data.count_list)
       let timer = getTimer(data.count_list) * 1000
-      await new Promise(resolve => setTimeout(resolve, timer));
-      // const response = await fetch("https://презентатор.рф/api2/generate/", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(data),
-      // });
-
-      // if (!response.ok) {
-      //   if (response.status === 502) {
-      //     throw new Error("Bad Gateway: сервер недоступен");
-      //   } else if (response.status === 524) {
-      //     throw new Error("A Timeout Occurred: сервер не ответил вовремя");
-      //   } else {
-      //     throw new Error("Failed to generate presentation");
-      //   }
-      // }
       
-      // const responseData = await response.json();
-      // localStorage.setItem("presentationLink", responseData);
-      // navigate(`${checkRole()}`);
+      const fetchPromise = fetch("https://презентатор.рф/api2/generate/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      const timerPromise = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, timer);
+      });
+      
+      await Promise.all([fetchPromise, timerPromise]);
+  
+      const response = await fetchPromise;
+      if (!response.ok) {
+        if (response.status === 502) {
+          throw new Error("Bad Gateway: сервер недоступен");
+        } else if (response.status === 524) {
+          throw new Error("A Timeout Occurred: сервер не ответил вовремя");
+        } else {
+          throw new Error("Failed to generate presentation");
+        }
+      }
+      const responseData = await response.json();
+      setIsGenerating(false);
+      localStorage.setItem("presentationLink", responseData);
+      navigate(`${checkRole()}`);
     } catch (error) {
-        setIsErrorModalVisible(true);
+      setIsErrorModalVisible(true);
     } finally {
       setIsGenerating(false);
     }
-    
-    };
+  };
 
     // const updateGen = async () => {
     //   try {
@@ -99,6 +107,9 @@ const Generation = () => {
   
 
   useEffect(() => {
+    console.log('loadTime', loadTime)
+    console.log('timeFromSlides', timeFromSlides)
+    console.log('getTimer(timeFromSlides)', getTimer(timeFromSlides))
     let interval;
       // let messages = [
     //   "Почти готово, пара минут осталось!",
@@ -117,15 +128,15 @@ const Generation = () => {
       interval = setInterval(() => {
         setLoadTime(prevLoadTime => {
           if (prevLoadTime < 100) {
-            let step = 1 / getTimer(timeFromSlides);
-            let nextLoadTime = prevLoadTime + step
-            return nextLoadTime
+            let step = 100 / getTimer(timeFromSlides);
+            let nextLoadTime = Math.min(prevLoadTime + step, 100); 
+            return nextLoadTime;
           } else {
             clearInterval(interval);
             return 100;
           }
         });
-      }, 7); // так и не понял от чего зависит задержка, подбором сделал 7, иначе компонент загрузки отрабатывает не совсем корректно, если получится отдебажить - будет круто
+      }, 1000);
       return () => clearInterval(interval);
     } else {
       clearInterval(interval);
@@ -240,15 +251,16 @@ const Generation = () => {
                         </div>
                       ) : (
                         <div className={styles.buttonContainer}>
-                          {/*
-                          TODO: Применить метод для начала генерации
-                          */}
-                          <button type="submit" onClick={!free_generate ? handleSubmit : () => setIsModalVisible(true)} className={styles.button}>
+                          <button type="submit" onClick={free_generate ? handleSubmit : () => setIsModalVisible(true)} className={styles.button}>
                             Начать магию
                           </button>
-                          <span className={styles.tokenPrice}>
-                            5 токенов
-                          </span>
+                          <div className={styles.tokenPriceContainer}>
+                            <img src="../images/infoIcon.png" alt="hint" />
+                            <span className={styles.tokenPrice}>
+                              С Вас спишется 5 токенов
+                            </span>
+                          </div>
+                         
                         </div>
                       )}
                      
