@@ -195,18 +195,14 @@ const Generation = () => {
                       </label>
                       <Field
                         name="slides"
-                        type="number"
-                        min="4"
-                        max="17"
                         placeholder="Укажите кол-во слайдов"
-                        onInput={(e) => {
-                          const maxLimit = 17;
-                          const inputVal = parseInt(e.target.value) || 4;
-                          const sanitizedVal = Math.min(maxLimit, inputVal);
-                          e.target.value = sanitizedVal.toString();
-                        }}
+                        type="number"
                         className={cn(styles.generationInput, { [styles.inputError]: errors.slides && touched.slides })}
                       />
+                    
+                       {errors.slides && touched.slides 
+                        ? (<div className={styles.minError}>{errors.slides}</div>) 
+                        : (<div className={styles.sizeBox}></div>) }
                       {/* <div className={styles.checkboxContainer}>
                         <Field name="locale" type="checkbox" className={styles.checkbox} />
                         <span className={styles.checkboxLabel}>Формировать презентацию на английском языке</span>

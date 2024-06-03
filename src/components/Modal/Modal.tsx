@@ -62,7 +62,7 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
     }
     try {
       const response = await UserRepository.checkAddsGenerates(cleanedPhoneNumber);
-      if(response.data) {
+      if (response.data) {
         rewardGeneration()
       } else {
         setIsNoAddModalVisible(true)
@@ -96,9 +96,9 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
             <img src="../images/x.svg" alt="close" />
           </div>
           <div className={styles.content}>
-            <span className={styles.title}>Скачиваний не осталось</span>
+            <span className={styles.title}>Токенов не осталось</span>
             <span className={styles.subtitle}>Вы можете их приобрести</span>
-            <div className={styles.buttonPrimary} onClick={() => navigate('/user/account')}>Приобрести скачивания</div>
+            <div className={styles.buttonPrimary} onClick={() => navigate('/user/account')}>Приобрести токены</div>
             <div className={styles.rewardGeneration} onClick={() => handleCheckAddsGenerates()}>
               Токены за рекламу
             </div>

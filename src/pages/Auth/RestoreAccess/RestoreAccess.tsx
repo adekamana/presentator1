@@ -62,7 +62,7 @@ const RestoreAccess: FC = () => {
 													mask="(999) 999-99-99"
 													placeholder="(999) 999-99-99"
 												>
-													{(inputProps: any) => <input {...inputProps} className={styles.restoreAccessInput} />}
+													{(inputProps: any) => <input {...inputProps} className={cn(styles.restoreAccessInput, { [styles.inputError]: errors.login && touched.login })} />}
 												</InputMask>
 											)}
 										</Field>

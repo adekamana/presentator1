@@ -98,16 +98,17 @@ useEffect(() => {
 							
 								try {
 									console.log("Отправка: ", serverData);
-									// const response = await axios.post(
-									// 	"https://презентатор.рф/api/check_code/",
-									// 	serverData
-									// );
+									const response = await axios.post(
+										"https://презентатор.рф/api/check_code/",
+										serverData
+									);
 							
-									// if (response.data.status === "success") {
-									// 	navigate("/login");
-									// } else {
-									// 	setShowErrorText(true);
-									// }
+									if (response.data.status === "success") {
+										// TODO: переход на страницу подтверждения пароля
+										navigate("/confirmation-password");
+									} else {
+										setShowErrorText(true);
+									}
 								} catch (error) {
 									setShowErrorText(true);
 								}

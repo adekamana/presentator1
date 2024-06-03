@@ -82,7 +82,7 @@ const Login: FC = () => {
 										<Field
 											name="login"
 											placeholder="(999) 999-99-99"
-											className={cn(styles.registerInput, { [styles.inputError]: errors.login && touched.login })}
+											className={cn(styles.loginInputWithPrefix, { [styles.inputError]: errors.login && touched.login })}
 										>
 											{({ field }: { field: any }) => (
 												<InputMask
@@ -91,14 +91,11 @@ const Login: FC = () => {
 													placeholder="(999) 999-99-99"
 												>
 
-													{(inputProps: any) => <input {...inputProps} className={cn(styles.registerInput, { [styles.inputError]: errors.login && touched.login })} />}
+													{(inputProps: any) => <input {...inputProps} className={cn(styles.loginInputWithPrefix, { [styles.inputError]: errors.login && touched.login })} />}
 												</InputMask>
 											)}
 										</Field>
 									</div>
-									<label className={cn(styles.label, { [styles.labelError]: errors.password && touched.password })}>
-										Пароль
-									</label>
 									<div className={styles.inputWithIcon}>
 										<Field
 											name='password'

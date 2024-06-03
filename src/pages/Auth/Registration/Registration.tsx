@@ -11,7 +11,9 @@ import InputMask from 'react-input-mask';
 const Registration: FC = () => {
   const navigate = useNavigate()
   const role = window.localStorage.getItem('role')
-
+  // TODO: 
+  // Запрос на проверку номера - если нет - показывать ошибку
+  // Запрос на регистрацию 
   return (
     <main className={styles.container}>
       <div className={styles.opacityBox}>
@@ -60,8 +62,9 @@ const Registration: FC = () => {
                           {...field}
                           mask="(999) 999-99-99"
                           placeholder="(999) 999-99-99"
+
                         >
-                          {(inputProps: any) => <input {...inputProps} className={styles.registerInput} />}
+                          {(inputProps: any) => <input {...inputProps} className={cn(styles.registerInput, { [styles.inputError]: errors.login && touched.login })} />}
                         </InputMask>
                       )}
                     </Field>

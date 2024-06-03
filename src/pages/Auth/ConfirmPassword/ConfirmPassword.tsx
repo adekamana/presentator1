@@ -45,7 +45,13 @@ const ConfirmPassword: FC = () => {
 										/>
 										<img src={isPasswordVisible ? '../images/eyeOff.svg' : '../images/eye.svg'} className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
 									</div>
-									<label className={cn(styles.label, { [styles.labelError]: errors.password && touched.password })}>
+
+									{
+										errors.password && touched.password
+											? <span className={styles.labelError}>{errors.password}</span>
+											: <div className={styles.sizeBlock}></div>
+									}
+									<label className={cn(styles.label, { [styles.labelError]: errors.confirmPassword && touched.confirmPassword })}>
 										Подтвердите пароль
 									</label>
 									<div className={styles.inputWithIcon}>
@@ -53,10 +59,14 @@ const ConfirmPassword: FC = () => {
 											name='confirmPassword'
 											type={isPasswordVisible ? 'text' : 'password'}
 											placeholder='Пароль'
-											className={cn(styles.confirmPasswordInput, { [styles.inputError]: errors.password && touched.password })}
+											className={cn(styles.confirmPasswordInput, { [styles.inputError]: errors.confirmPassword && touched.confirmPassword })}
 										/>
 									</div>
-
+									{
+										errors.confirmPassword && touched.confirmPassword
+											? <span className={styles.labelError}>{errors.confirmPassword}</span>
+											: <div className={styles.sizeBlock}></div>
+									}
 									<div className={styles.buttonContainer}>
 										<button type='submit'>Подтвердить</button>
 									</div>

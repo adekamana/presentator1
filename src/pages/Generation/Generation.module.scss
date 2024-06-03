@@ -84,7 +84,7 @@
 	line-height: 105%;
 	letter-spacing: 0%;
 	margin-bottom: 4px;
-	margin-top: 80px;
+	margin-top: 42px;
 	text-align: center;
 }
 
@@ -322,11 +322,13 @@ button{
 
 .minError {
 	color: rgb(255, 51, 31);
-	font-size: 16px;
+	font-size: 12px;
 	font-weight: 400;
 	line-height: 125%;
 	letter-spacing: 0%;
-	margin: 8px 0;
+	padding: 4px 0;
+	box-sizing: border-box;
+	height: 24px;
 }
 
 .titleContainer {
@@ -361,6 +363,19 @@ button{
 		height: 16px;
 		margin-right: 8px;
 	}
+}
+
+.sizeBox {
+	height: 24px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
 @media screen and (max-width: 1920px) {
@@ -458,17 +473,16 @@ button{
 	.generationInput[placeholder] {
 		font-size: 14px;
 	}
-	.labelgen {
-		color: rgb(0, 0, 0);
-		font-size: 12px;
-		font-weight: 500;
-		line-height: 105%;
-		letter-spacing: 0%;
-		margin-bottom: 4px;
-		margin-top: 24px;
-		text-align: center;
-
-	}
+	// .labelgen {
+	// 	color: rgb(0, 0, 0);
+	// 	font-size: 12px;
+	// 	font-weight: 500;
+	// 	line-height: 105%;
+	// 	letter-spacing: 0%;
+	// 	margin-bottom: 4px;
+	// 	margin-top: 16px;
+	// 	text-align: center;
+	// }
 	
 	.removeSlide {
 		margin: 0 0 0 8px ;

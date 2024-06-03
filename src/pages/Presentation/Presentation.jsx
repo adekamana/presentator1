@@ -83,7 +83,9 @@ const Presentation = () => {
               </div>
               <div className={styles.suggestion}>
                 <img src="../images/infoIcon.png"/>
-               <span className={styles.suggestionLabel}>Ваши предложения по улучшению сервиса</span>
+               <a className={styles.suggestionLabel} 
+                href="https://t.me/vlados_manager">Ваши предложения по улучшению сервиса
+              </a>
               </div>
               <div className={styles.buttonContainer}>
                 <div className={styles.sizeBlock}></div>

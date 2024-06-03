@@ -31,7 +31,9 @@ const MobileModal: FC<MobileModalProps> = ({ isModalVisible, setIsModalVisible }
 								<span className={styles.menuItem}>
 									<a href="https://t.me/presentatorai/2">FAQ</a>
 								</span>
-								<span className={styles.menuItem}>Поддержка</span>
+								<span className={styles.menuItem}>
+									<a href="https://t.me/vlados_manager">Поддержка</a>
+								</span>
 								<span className={styles.menuItem}>Баланс: </span>
 								<span className={styles.menuItem}>{`${generates.free_generate} токенов`}</span>
 							</div>
@@ -47,7 +49,9 @@ const MobileModal: FC<MobileModalProps> = ({ isModalVisible, setIsModalVisible }
 								<span className={styles.menuItem}>
 									<a href="https://t.me/presentatorai/2">FAQ</a>
 								</span>
-								<span className={styles.menuItem}>Поддержка</span>
+								<span className={styles.menuItem}>
+									<a href="https://t.me/vlados_manager">Поддержка</a>
+								</span>
 								<span className={styles.authItem} onClick={() => navigate('/login')}>Вход</span>
 								<span className={styles.authItem} onClick={() => navigate('/registration')}>Регистрация</span>
 							</div>

@@ -138,7 +138,17 @@
 	width: 218px;
 	height: 25px;
 	margin-left: 55px;
-	
+}
+
+.loginInputWithPrefix {
+	margin-bottom: 28px;
+	border: 2px solid rgb(91, 136, 229);
+	border-radius: 10px;
+	padding: 10px;
+	text-decoration: none;
+	outline: none;
+	width: 218px;
+	height: 25px;
 }
 
 .loginInput[placeholder] {
