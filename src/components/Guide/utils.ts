@@ -8,10 +8,10 @@ export const staisticContent = [
 		label: 'Лет на рынке нейросетей'
 	},
 	{
-		value: '4min', 
+		value: '1min',
 		label: 'Cреднее время создания презентации нашим ботом	'
 	},
-	
+
 	{
 		value: 2,
 		label: 'Презентаций, сгенерированных нашим ботом'

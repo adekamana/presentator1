@@ -17,7 +17,7 @@ const RewardModal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
           <img src="../images/x.svg" alt="close" />
         </div>
         <div className={styles.rewardContent}>
-          <div className={styles.rewardSubtitle}>Получена один токен</div>
+          <div className={styles.rewardSubtitle}>Получена одна генерация</div>
           <div className={styles.rewardButtonPrimary} onClick={handleClose}>
             Продолжить
           </div>

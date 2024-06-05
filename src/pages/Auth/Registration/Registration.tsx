@@ -27,7 +27,8 @@ const Registration: FC = () => {
           <Formik
             validationSchema={validationSchema}
             initialValues={{
-              login: ""
+              login: "",
+              code: "",
             }}
             onSubmit={(values, { resetForm }) => {
               const cleanedPhoneNumber = values.login.replace(/\D/g, '');
@@ -40,6 +41,7 @@ const Registration: FC = () => {
               <Form className={styles.form}>
                 <div className={styles.formContainer}>
                   <div className={styles.title}>Регистрация</div>
+
                   <div className={styles.subtitle}>
                     <span className={styles.subtitleLabel}>Уже есть аккаунт?</span>
                     <span
@@ -49,7 +51,9 @@ const Registration: FC = () => {
                       Войти
                     </span>
                   </div>
+
                   <label className={cn(styles.label, { [styles.labelError]: errors.login && touched.login })}>Номер телефона</label>
+
                   <div className={styles.inputWithPrefix}>
                     <div className={styles.prefix}>+7</div>
                     <Field
@@ -68,7 +72,15 @@ const Registration: FC = () => {
                         </InputMask>
                       )}
                     </Field>
+
+
                   </div>
+                  <label className={cn(styles.label, { [styles.labelError]: errors.login && touched.login })}>Реферальный код</label>
+                  <Field
+                    name="code"
+                    placeholder="Код"
+                    className={styles.codeInput}
+                  />
                   <div className={styles.buttonContainer}>
                     <button type="submit">Регистрация</button>
                   </div>

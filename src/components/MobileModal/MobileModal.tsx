@@ -34,8 +34,8 @@ const MobileModal: FC<MobileModalProps> = ({ isModalVisible, setIsModalVisible }
 								<span className={styles.menuItem}>
 									<a href="https://t.me/vlados_manager">Поддержка</a>
 								</span>
-								<span className={styles.menuItem}>Баланс: </span>
-								<span className={styles.menuItem}>{`${generates.free_generate} токенов`}</span>
+								<span className={styles.menuItem}>{`Баланс: ${generates.free_generate}`}</span>
+								<span className={styles.menuItem}>генераций</span>
 							</div>
 						</div>
 					) : (

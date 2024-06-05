@@ -248,12 +248,12 @@ const Generation = () => {
                       ) : (
                         <div className={styles.buttonContainer}>
                           <button type="submit" onClick={free_generate ? handleSubmit : () => setIsModalVisible(true)} className={styles.button}>
-                            Начать магию
+                            Начать генерацию
                           </button>
                           <div className={styles.tokenPriceContainer}>
                             <img src="../images/infoIcon.png" alt="hint" />
                             <span className={styles.tokenPrice}>
-                              С Вас спишется 5 токенов
+                              С Вас спишется 1 генерация
                             </span>
                           </div>
                          

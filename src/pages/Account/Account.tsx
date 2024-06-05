@@ -6,7 +6,7 @@ import { prices } from "./utils";
 import Loader from "../../components/Loader";
 import { useNavigate } from "react-router";
 import Header from "../../components/Header";
-import ButtonComponent from "./ButtonComponent";
+import ButtonComponent from "../../components/ui/Button/ButtonComponent";
 import { Form, Link } from "react-router-dom";
 import { Field, Formik } from "formik";
 import RewardModal from "../../components/RewardModal";
@@ -210,17 +210,19 @@ const Account: FC = () => {
 
 
                 <div className={styles.infoHint} style={{ display: 'flex', justifyContent: 'center' }} onClick={() => navigate("/user/referral")}>
-                  <span className={styles.labelPointer}>Реферальная программа</span>
+                  <span className={styles.labelPointer}>Получить бесплатные генерации </span>
                 </div>
 
 
                 <div className={styles.generationBox}>
-                  <span className={styles.label}>Покупка токенов</span>
+                  <span className={styles.label}>Покупка генераций </span>
 
+                  {/* 
+                    TODO: вернуть, когда будет переход на токены
                   <div className={styles.infoHint}>
                     <img src="../images/infoIcon.png" alt="hint" />
                     <span className={styles.hint}>Токены позволяют вам покупать генерации и дополнительные функции. Ознакомьтесь с ними на <span onClick={() => navigate("/user/generation")} className={styles.hintLink}>странице</span></span>
-                  </div>
+                  </div> */}
 
                   <div className={styles.prices}>
                     {prices.map((price: any, index: number) => (
@@ -249,7 +251,7 @@ const Account: FC = () => {
                     className={styles.rewardGeneration}
                     onClick={() => { handleCheckAddsGenerates() }}
                   >
-                    Токены за рекламу
+                    Получить генерации за просмотр рекламы
                   </div>
                 </div>
 
@@ -257,7 +259,7 @@ const Account: FC = () => {
                 <div className={styles.accountFooter}>
                   <span>
                     Осталось: <strong>{generates?.free_generate}</strong>{" "}
-                    токенов
+                    генераций
                   </span>
                   <span>
                     Скачано: <strong>{generates?.current_generate}</strong>{" "}
@@ -296,6 +298,7 @@ const Account: FC = () => {
               <ButtonComponent
                 selected={activeButton !== null && activeBox == true}
                 onClick={handleBuyGenerations}
+                text="Купить генерации"
               />
             </div>
           </div>

@@ -88,7 +88,7 @@ const Presentation = () => {
               </a>
               </div>
               <div className={styles.buttonContainer}>
-                <div className={styles.sizeBlock}></div>
+                
 
                 <div className={styles.buttonGroup}>
                   <button
@@ -98,11 +98,11 @@ const Presentation = () => {
                   >
                     Скачать
                   </button>
-                  <span className={styles.footerLabel}>Осталось: <strong>{generates.free_generate}</strong> токенов</span>
+                  <span className={styles.footerLabel}>Осталось: <strong>{generates.free_generate}</strong> генераций</span>
                  
                 </div>
 
-                <div className={styles.radioGroup}>
+                {/* <div className={styles.radioGroup}>
                   <div>
                     <input
                       type="radio"
@@ -117,7 +117,7 @@ const Presentation = () => {
                     </label>
                   </div>
 
-                  {/* <div>
+                  <div>
                     <input
                       type="radio"
                       id="pdf"
@@ -128,8 +128,8 @@ const Presentation = () => {
                     <label className={styles.radioLabel} htmlFor="pdf">
                       .pdf
                     </label>
-                  </div> */}
-                </div>
+                  </div>
+                </div> */}
               </div>
             </div>
           </div>

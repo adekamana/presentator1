@@ -35,7 +35,7 @@
 
 .title {
 	color: rgb(21, 30, 45);
-	font-size: 40px;
+	font-size: 36px;
 	font-weight: 700;
 	line-height: 125%;
 	letter-spacing: 0%;
@@ -55,13 +55,21 @@
 	font-weight: 600;
 	line-height: 125%;
 	letter-spacing: 0%;
-	margin-right: 8px;
+}
+
+li {
+	color: rgba(21, 30, 45, 0.6);
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 125%;
+	letter-spacing: 0%;
 }
 
 .info {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	border: 1px solid rgb(91, 136, 229);
 	border-radius: 10px;
 	padding: 6px;
@@ -74,6 +82,34 @@
 	margin-top: 8px;
 	margin-bottom: 8px;
 	min-height: 48px;
+}
+
+.buttonLink {
+	width: 200px;
+	height: 32px;
+	background-color: rgb(91, 136, 229);
+	color:  white;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 125%;
+	letter-spacing: 0%;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.infoTitle {
+	display: flex;
+	align-items: center;
+	margin: 8px 0;
+	width: 100%;
+	img {
+		width: 20px;
+		height: 20px;
+		margin-left: 20px;
+	}
 }
 
 .code {
@@ -89,6 +125,31 @@
 		line-height: 125%;
 		letter-spacing: .6rem;
 		text-align: center;
+	}
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+.hint {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 8px 0;
+	width: 100%;
+	img {
+		width: 20px;
+		height: 20px;
+		margin-right: 12px;
+	}
+
+	span {
+		color: rgb(21, 30, 45, 0.4);
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 125%;
+		letter-spacing: 0%;
 	}
 }
 
@@ -127,7 +188,7 @@
 		min-width: 343px;
 	}
 	.title {
-		font-size: 27px;
+		font-size: 24px;
 		margin-bottom: 8px;
 	}
 	.form{

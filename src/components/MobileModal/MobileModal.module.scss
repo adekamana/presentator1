@@ -25,8 +25,8 @@
 .authModal {
 	border-radius: 15px;
 	background: rgb(251, 251, 255);
-	width: 221px;
-	height: 86px;
+	width: 240px;
+	height: 100px;
 	position: absolute;
 	right: 16px;
 	top: 16px;
@@ -47,8 +47,8 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
-	gap: 8px;
-	padding: 0 24px;
+	gap: 6px;
+	padding: 8PX 16px;
 }
 
 .authContent {

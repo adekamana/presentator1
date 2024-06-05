@@ -86,7 +86,7 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
             <img src="../images/x.svg" alt="close" />
           </div>
           <div className={styles.rewardContent}>
-            <div className={styles.rewardSubtitle}>Получен один токен</div>
+            <div className={styles.rewardSubtitle}>Получена одна генерация</div>
             <div className={styles.rewardButtonPrimary} onClick={handleClose}>Продолжить</div>
           </div>
         </div>
@@ -96,11 +96,11 @@ const Modal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
             <img src="../images/x.svg" alt="close" />
           </div>
           <div className={styles.content}>
-            <span className={styles.title}>Токенов не осталось</span>
+            <span className={styles.title}>Генераций не осталось</span>
             <span className={styles.subtitle}>Вы можете их приобрести</span>
-            <div className={styles.buttonPrimary} onClick={() => navigate('/user/account')}>Приобрести токены</div>
+            <div className={styles.buttonPrimary} onClick={() => navigate('/user/account')}>Приобрести генерации</div>
             <div className={styles.rewardGeneration} onClick={() => handleCheckAddsGenerates()}>
-              Токены за рекламу
+              Генерации за рекламу
             </div>
           </div>
         </div>

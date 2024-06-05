@@ -77,7 +77,7 @@ const Header: FC<HeaderProps> = ({ generation, role }: HeaderProps) => {
 									<div className={styles.buttonAccount}>
 
 										<div className={styles.buttonAccountText} onClick={() => checkGenerates()}>
-											<span>{`Баланс: ${generates.free_generate} токенов`}</span>
+											<span>{`Баланс: ${generates.free_generate} генераций`}</span>
 										</div>
 
 									</div>

@@ -7,8 +7,8 @@ interface ModalProps {
   setIsModalVisible: (isModalVisible: boolean) => void;
 }
 
-const ServerErrorModal: FC<ModalProps> = ({isModalVisible, setIsModalVisible}) => {
-	const handleClose = () => {
+const ServerErrorModal: FC<ModalProps> = ({ isModalVisible, setIsModalVisible }) => {
+  const handleClose = () => {
     setIsModalVisible(false);
   };
   if (!isModalVisible) return null;
@@ -20,9 +20,9 @@ const ServerErrorModal: FC<ModalProps> = ({isModalVisible, setIsModalVisible}) =
         </div>
         <div className={styles.rewardContent}>
           <div className={styles.rewardSubtitle}>Сейчас большая нагрузка на сервер, попробуйте пожалуйста позднее.</div>
-					<div className={styles.rewardSpan}>
- 						Мы начислили Вам 2 токена
-					</div >
+          <div className={styles.rewardSpan}>
+            Мы начислили Вам 2 генерации
+          </div >
           <div className={styles.rewardButtonPrimary} onClick={handleClose}>
             Продолжить
           </div>
