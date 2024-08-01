@@ -1,0 +1,12 @@
+# Используем официальный образ Python
+FROM python:3.10
+
+# Копируем все файлы в рабочую директорию в контейнере
+COPY . /app
+
+# Устанавливаем зависимости
+WORKDIR /app
+RUN pip install -r requirements.txt
+
+# Запускаем скрипт index.py
+CMD ["python", "index2.py"]

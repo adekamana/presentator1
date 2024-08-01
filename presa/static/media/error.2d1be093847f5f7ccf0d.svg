@@ -1,0 +1,16 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip60_154">
+			<rect id="alert-triangle" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="alert-triangle" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip60_154)">
+		<path id="Vector" d="M1.82007 18C1.64551 18.3025 1.55298 18.6453 1.552 18.9944C1.55103 19.3438 1.6416 19.687 1.81445 19.9905C1.9873 20.2939 2.23682 20.5466 2.53784 20.7239C2.83862 20.9009 3.18091 20.9961 3.53003 21L20.47 21C20.8193 20.9961 21.1614 20.9009 21.4624 20.7239C21.7632 20.5466 22.0127 20.2939 22.1855 19.9905C22.3586 19.687 22.449 19.3438 22.448 18.9944C22.447 18.6453 22.3547 18.3025 22.1799 18L13.71 3.85986C13.5317 3.56616 13.2808 3.323 12.9812 3.15454C12.6816 2.98584 12.3438 2.89722 12 2.89722C11.6562 2.89722 11.3184 2.98584 11.0188 3.15454C10.7192 3.323 10.4683 3.56616 10.29 3.85986L1.82007 18Z" stroke="#FF331F" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round"/>
+		<path id="Vector" d="M12 9L12 13" stroke="#FF331F" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+		<path id="Vector" d="M12 17L12.01 17" stroke="#FF331F" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>
