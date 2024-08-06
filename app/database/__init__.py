@@ -3,7 +3,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, ForeignKey, Boolean , String
 from sqlalchemy.orm import relationship
+
+
 Base = declarative_base()
+
 # Параметры подключения к базе данных
 db_params = {
     'host': '87.251.87.11',
@@ -13,7 +16,7 @@ db_params = {
 
 }
 
-#db_url = f"postgresql+psycopg2://{db_params['user']}:{db_params['password']}@{db_params['host']}/{db_params['database']}"
+# db_url = f"postgresql+psycopg2://{db_params['user']}:{db_params['password']}@{db_params['host']}/{db_params['database']}"
 # engine = create_engine(db_url)
 # print("create")
 # Session = sessionmaker(bind=engine)

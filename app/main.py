@@ -1,14 +1,16 @@
-from fastapi import FastAPI, HTTPException, Depends,Form
+import jwt
+
+from fastapi import FastAPI, HTTPException, Depends, Form
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
-import jwt
 from datetime import datetime, timedelta
-from models import User
-import pymodel
-import database
 
-DATABASE_URL = "postgresql://user_sql:in_NrbGAGjimvfT-06SH@193.37.71.117/agony"
-SessionLocal = database.get_session(DATABASE_URL)
+from presentator1.JWT import database, pymodel
+from presentator1.JWT.models import User
+from presentator1.app.api.endpoints.admin import admin_router
+from presentator1.app.api.endpoints.customer import customer_router
+from presentator1.app.api.endpoints.generation import generation_router
+from presentator1.app.api.endpoints.user import user_router
 
 SECRET_KEY = "SLNJIKDASUODSAIUDHNSAUGBD09213712y793812hwjklSDJKASGDY()*#E@!UIOHbjksabduhksagvbdsakgdba"
 ALGORITHM = "HS256"
@@ -19,6 +21,12 @@ app = FastAPI()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token2")
 
+app.include_router(admin_router)
+app.include_router(customer_router)
+app.include_router(generation_router)
+app.include_router(user_router)
+
+
 @app.post("/register")
 def register_user(username: str, password: str):
     existing_user = get_user(username)
@@ -27,10 +35,11 @@ def register_user(username: str, password: str):
     hashed_password = pwd_context.hash(password)
     user_data = {"username": username, "hashed_password": hashed_password}
     user = User(**user_data)
-    with SessionLocal() as db:
+    with database.SessionLocal() as db:
         db.add(user)
         db.commit()
     return {"Success"}
+
 
 @app.post("/token")
 def authenticate_user(token_request: pymodel.TokenRequest):
@@ -44,7 +53,7 @@ def authenticate_user(token_request: pymodel.TokenRequest):
 
     if not is_password_correct:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
-    
+
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
@@ -65,23 +74,25 @@ def login_for_access_token(username: str = Form(...), password: str = Form(...))
     refresh_token = create_refresh_token({"sub": user.username})
     return pymodel.Token(access_token=access_token, refresh_token=refresh_token, token_type="bearer")
 
+
 @app.post("/refresh-token")
 def refresh_token(refresh_token: str = Form(...)):
     decoded_token = verify_jwt_token(refresh_token)
     if not decoded_token:
         raise HTTPException(status_code=400, detail="Invalid refresh token")
-    
+
     username = decoded_token["sub"]
     user = get_user(username)
     if not user:
         raise HTTPException(status_code=400, detail="User not found")
-    
+
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
     refresh_token = create_refresh_token({"sub": user.username})
     return pymodel.Token(access_token=access_token, refresh_token=refresh_token, token_type="bearer")
+
 
 def create_access_token(data: dict, expires_delta: timedelta):
     to_encode = data.copy()
@@ -90,8 +101,10 @@ def create_access_token(data: dict, expires_delta: timedelta):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
+
 def create_refresh_token(data: dict):
     return create_access_token(data, timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS))
+
 
 def verify_jwt_token(token: str):
     try:
@@ -99,7 +112,8 @@ def verify_jwt_token(token: str):
         return decoded_data
     except jwt.PyJWTError:
         return None
-    
+
+
 def get_current_user(token: str = Depends(oauth2_scheme)):  # Исправлено
     print(token)
     decoded_data = verify_jwt_token(token)
@@ -111,19 +125,24 @@ def get_current_user(token: str = Depends(oauth2_scheme)):  # Исправлен
         raise HTTPException(status_code=400, detail="User not found")
     return user
 
+
 @app.get("/users/me")
 def get_user_me(current_user: User = Depends(get_current_user)):
     return current_user
+
 
 @app.get("/users/me2")
 def get_user_me(token: str):
     User = get_current_user(token)
     return User
 
+
 def get_user(username: str):
-    with SessionLocal() as db:
+    with database.SessionLocal() as db:
         return db.query(User).filter(User.username == username).first()
+
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
